@@ -1,0 +1,2255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sec 3 Physics Ch 11.2: Uses & Dangers of EM Waves</title>
+    <style>
+        :root {
+            --md-sys-color-primary: #6750A4;
+            --md-sys-color-on-primary: #FFFFFF;
+            --md-sys-color-primary-container: #EADDFF;
+            --md-sys-color-on-primary-container: #21005D;
+            --md-sys-color-secondary: #625B71;
+            --md-sys-color-on-secondary: #FFFFFF;
+            --md-sys-color-secondary-container: #E8DEF8;
+            --md-sys-color-on-secondary-container: #1D192B;
+            --md-sys-color-tertiary: #7D5260;
+            --md-sys-color-tertiary-container: #FFD8E4;
+            --md-sys-color-on-tertiary-container: #31111D;
+            --md-sys-color-background: linear-gradient(135deg, #EBF5FF 0%, #E0F2FE 30%, #F0F4FF 65%, #E8F5E9 100%);
+            --md-sys-color-on-background: #0F172A;
+            --md-sys-color-surface: rgba(255, 255, 255, 0.92);
+            --md-sys-color-surface-variant: #E2E8F0;
+            --md-sys-color-on-surface: #0F172A;
+            --md-sys-color-on-surface-variant: #334155;
+            --md-sys-color-outline: #64748B;
+            --md-sys-color-outline-variant: #CBD5E1;
+            --md-sys-color-success: #198754;
+            --md-sys-color-success-container: #D1E7DD;
+            --md-sys-color-on-success-container: #0F5132;
+            --md-sys-color-error: #B3261E;
+            --md-sys-color-error-container: #F9DEDC;
+            --md-sys-color-on-error-container: #410E0B;
+            --md-sys-color-gold: #D97706;
+            --md-sys-color-gold-container: #FEF3C7;
+            --md-sys-color-card-bg: rgba(255, 255, 255, 0.94);
+            --md-sys-color-shadow: rgba(14, 165, 233, 0.12);
+
+            --md-shape-corner-extra-large: 28px;
+            --md-shape-corner-large: 16px;
+            --md-shape-corner-medium: 12px;
+            --md-shape-corner-full: 9999px;
+
+            --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --transition-speed: 0.25s;
+        }
+
+        [data-theme="dark"] {
+            --md-sys-color-primary: #D0BCFF;
+            --md-sys-color-on-primary: #381E72;
+            --md-sys-color-primary-container: #4F378B;
+            --md-sys-color-on-primary-container: #EADDFF;
+            --md-sys-color-secondary: #CCC2DC;
+            --md-sys-color-on-secondary: #332D41;
+            --md-sys-color-secondary-container: #4A4458;
+            --md-sys-color-on-secondary-container: #E8DEF8;
+            --md-sys-color-tertiary: #EFB8C8;
+            --md-sys-color-tertiary-container: #633B48;
+            --md-sys-color-on-tertiary-container: #FFD8E4;
+            --md-sys-color-background: linear-gradient(135deg, #0B132B 0%, #1C2541 40%, #0F172A 75%, #172554 100%);
+            --md-sys-color-on-background: #E6E0E9;
+            --md-sys-color-surface: rgba(30, 41, 59, 0.92);
+            --md-sys-color-surface-variant: #334155;
+            --md-sys-color-on-surface: #E6E0E9;
+            --md-sys-color-on-surface-variant: #CAC4D0;
+            --md-sys-color-outline: #938F99;
+            --md-sys-color-outline-variant: #475569;
+            --md-sys-color-success: #75B798;
+            --md-sys-color-success-container: #0F5132;
+            --md-sys-color-on-success-container: #D1E7DD;
+            --md-sys-color-error: #F2B8B5;
+            --md-sys-color-error-container: #601410;
+            --md-sys-color-on-error-container: #F9DEDC;
+            --md-sys-color-gold: #F59E0B;
+            --md-sys-color-gold-container: #78350F;
+            --md-sys-color-card-bg: rgba(15, 23, 42, 0.92);
+            --md-sys-color-shadow: rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body {
+            background: var(--md-sys-color-background);
+            background-attachment: fixed;
+            color: var(--md-sys-color-on-background);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            max-height: 100vh;
+            overflow: hidden;
+            position: relative;
+            transition: background var(--transition-speed), color var(--transition-speed);
+        }
+
+        /* Ambient cute floating gradient bubbles in background */
+        body::before {
+            content: "";
+            position: absolute;
+            top: -10%;
+            left: -8%;
+            width: 52vw;
+            height: 52vw;
+            background: radial-gradient(circle, rgba(147, 197, 253, 0.5) 0%, rgba(191, 219, 254, 0.3) 50%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatGlow 14s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            bottom: -12%;
+            right: -8%;
+            width: 58vw;
+            height: 58vw;
+            background: radial-gradient(circle, rgba(167, 243, 208, 0.45) 0%, rgba(186, 230, 253, 0.35) 50%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatGlow 18s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, 30px) scale(1.1); }
+            100% { transform: translate(-30px, 50px) scale(0.95); }
+        }
+
+        .app-bar, .app-body, .bottom-nav {
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-bar {
+            height: 64px;
+            background-color: var(--md-sys-color-surface);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-shadow: 0 1px 3px var(--md-sys-color-shadow);
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mascot-avatar {
+            width: 44px;
+            height: 44px;
+            background-color: var(--md-sys-color-primary-container);
+            border-radius: var(--md-shape-corner-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 2px 5px var(--md-sys-color-shadow);
+            position: relative;
+        }
+
+        .mascot-avatar:hover {
+            transform: scale(1.1) rotate(6deg);
+        }
+
+        .app-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .app-subtitle {
+            font-size: 0.75rem;
+            color: var(--md-sys-color-on-surface-variant);
+            font-weight: 600;
+        }
+
+        .top-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .currency-badge, .streak-badge {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: var(--md-shape-corner-full);
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        .currency-badge {
+            background: var(--md-sys-color-gold-container);
+            color: var(--md-sys-color-gold);
+        }
+
+        .streak-badge {
+            background: var(--md-sys-color-tertiary-container);
+            color: var(--md-sys-color-on-tertiary-container);
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: var(--md-shape-corner-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--md-sys-color-on-surface-variant);
+            font-size: 1.1rem;
+            transition: background-color 0.2s;
+        }
+
+        .icon-btn:hover, .icon-btn:focus {
+            background-color: var(--md-sys-color-surface-variant);
+            outline: none;
+        }
+
+        .app-body {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .tab-content {
+            flex: 1;
+            display: none;
+            flex-direction: column;
+            padding: 16px 20px;
+            overflow-y: auto;
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .tab-content.active {
+            display: flex;
+        }
+
+        .card {
+            background-color: var(--md-sys-color-card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: var(--md-shape-corner-extra-large);
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--md-sys-color-outline-variant);
+            box-shadow: 0 6px 18px var(--md-sys-color-shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .quest-battle-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 18px;
+            align-items: start;
+            width: 100%;
+        }
+
+        @media (max-width: 900px) {
+            .quest-battle-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 960px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mode-selector {
+            display: flex;
+            gap: 8px;
+            background-color: var(--md-sys-color-surface-variant);
+            padding: 4px;
+            border-radius: var(--md-shape-corner-full);
+            margin-bottom: 14px;
+            align-self: center;
+        }
+
+        .mode-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 18px;
+            border-radius: var(--md-shape-corner-full);
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--md-sys-color-on-surface-variant);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .mode-btn.active {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            box-shadow: 0 2px 6px var(--md-sys-color-shadow);
+        }
+
+        .mascot-speech-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            padding: 12px 18px;
+            border-radius: var(--md-shape-corner-large);
+            margin-bottom: 14px;
+        }
+
+        .mascot-face {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+        }
+
+        .speech-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .game-header-bar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+            padding: 10px 16px;
+            border-radius: var(--md-shape-corner-large);
+            margin-bottom: 14px;
+        }
+
+        .stat-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-val {
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .stat-lbl {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.85;
+            font-weight: 700;
+        }
+
+        .boss-panel-card {
+            background: linear-gradient(145deg, var(--md-sys-color-surface), var(--md-sys-color-surface-variant));
+            border-radius: var(--md-shape-corner-extra-large);
+            padding: 18px;
+            border: 2px solid var(--md-sys-color-tertiary);
+            box-shadow: 0 6px 16px var(--md-sys-color-shadow);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .boss-avatar-wrapper {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            background: radial-gradient(circle, rgba(236,72,153,0.15) 0%, rgba(0,0,0,0) 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--md-shape-corner-large);
+            overflow: hidden;
+        }
+
+        .boss-svg-entity {
+            width: 135px;
+            height: 135px;
+            filter: drop-shadow(0 8px 14px rgba(0,0,0,0.25));
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .boss-entrance-anim {
+            animation: bossEntrance 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .boss-hit-anim {
+            animation: bossShakeHit 0.45s ease-in-out;
+        }
+
+        .user-hit-anim {
+            animation: userShakeHit 0.45s ease-in-out;
+        }
+
+        @keyframes bossEntrance {
+            0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+            60% { transform: scale(1.2) rotate(10deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        @keyframes bossShakeHit {
+            0% { transform: translate(0, 0) scale(1); filter: brightness(1); }
+            20% { transform: translate(-14px, 4px) scale(0.92); filter: brightness(1.8) drop-shadow(0 0 15px #FF69B4); }
+            40% { transform: translate(14px, -4px) scale(1.08); filter: brightness(1.8) drop-shadow(0 0 20px #FF69B4); }
+            60% { transform: translate(-8px, 2px) scale(0.96); }
+            80% { transform: translate(8px, -2px) scale(1.02); }
+            100% { transform: translate(0, 0) scale(1); filter: brightness(1); }
+        }
+
+        @keyframes userShakeHit {
+            0% { transform: translate(0, 0); }
+            20% { transform: translate(-8px, 6px); }
+            40% { transform: translate(8px, -6px); }
+            60% { transform: translate(-6px, 3px); }
+            80% { transform: translate(6px, -3px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .floating-dmg-text {
+            position: absolute;
+            font-size: 1.5rem;
+            font-weight: 900;
+            pointer-events: none;
+            animation: floatUpFade 1.2s forwards ease-out;
+            z-index: 20;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+        }
+
+        @keyframes floatUpFade {
+            0% { opacity: 1; transform: translateY(0) scale(0.8); }
+            30% { transform: translateY(-20px) scale(1.3); }
+            100% { opacity: 0; transform: translateY(-50px) scale(1); }
+        }
+
+        .boss-hp-bar-container, .user-hp-bar-container {
+            width: 100%;
+        }
+
+        .hp-label-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .hp-bar-outer {
+            width: 100%;
+            height: 16px;
+            background-color: var(--md-sys-color-outline-variant);
+            border-radius: var(--md-shape-corner-full);
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .boss-hp-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #F43F5E, #FB7185);
+            width: 100%;
+            transition: width 0.4s ease-out;
+        }
+
+        .user-hp-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #319795, #38A169);
+            width: 100%;
+            transition: width 0.4s ease-out;
+        }
+
+        .combat-log-box {
+            background: var(--md-sys-color-surface);
+            border: 1px solid var(--md-sys-color-outline-variant);
+            border-radius: var(--md-shape-corner-medium);
+            padding: 8px 12px;
+            font-size: 0.8rem;
+            min-height: 52px;
+            max-height: 70px;
+            overflow-y: auto;
+            color: var(--md-sys-color-on-surface-variant);
+            line-height: 1.35;
+        }
+
+        .question-card {
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 18px;
+            background-color: var(--md-sys-color-surface);
+            border-radius: var(--md-shape-corner-large);
+            margin-bottom: 16px;
+            border: 2px dashed var(--md-sys-color-outline-variant);
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.45;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        @media (max-width: 640px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .btn-option {
+            background-color: var(--md-sys-color-surface-variant);
+            color: var(--md-sys-color-on-surface-variant);
+            border: 2px solid transparent;
+            padding: 12px 16px;
+            border-radius: var(--md-shape-corner-large);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-option:hover {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            border-color: var(--md-sys-color-primary);
+        }
+
+        .btn-option:focus {
+            outline: 2px solid var(--md-sys-color-primary);
+        }
+
+        .btn-option.correct {
+            background-color: var(--md-sys-color-success-container) !important;
+            color: var(--md-sys-color-on-success-container) !important;
+            border-color: var(--md-sys-color-success) !important;
+        }
+
+        .btn-option.incorrect {
+            background-color: var(--md-sys-color-error-container) !important;
+            color: var(--md-sys-color-on-error-container) !important;
+            border-color: var(--md-sys-color-error) !important;
+        }
+
+        .btn-action {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--md-shape-corner-full);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+            box-shadow: 0 2px 6px var(--md-sys-color-shadow);
+        }
+
+        .btn-action:hover {
+            opacity: 0.92;
+            transform: translateY(-1px);
+        }
+
+        .btn-action:focus {
+            outline: 3px solid var(--md-sys-color-primary-container);
+        }
+
+        .btn-secondary {
+            background-color: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+        }
+
+        .canvas-container {
+            width: 100%;
+            height: 240px;
+            position: relative;
+            background-color: var(--md-sys-color-surface);
+            border-radius: var(--md-shape-corner-large);
+            border: 1px solid var(--md-sys-color-outline-variant);
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .slider-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .slider-control label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            min-width: 130px;
+        }
+
+        .slider-control input[type="range"] {
+            flex: 1;
+            accent-color: var(--md-sys-color-primary);
+            cursor: pointer;
+        }
+
+        .matching-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        @media (max-width: 640px) {
+            .matching-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .match-card {
+            background: var(--md-sys-color-surface);
+            border: 2px solid var(--md-sys-color-outline-variant);
+            border-radius: var(--md-shape-corner-large);
+            padding: 12px 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .match-card:hover {
+            border-color: var(--md-sys-color-primary);
+            transform: translateY(-2px);
+        }
+
+        .match-card.selected {
+            background: var(--md-sys-color-primary-container);
+            border-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary-container);
+        }
+
+        .match-card.matched {
+            background: var(--md-sys-color-success-container);
+            border-color: var(--md-sys-color-success);
+            color: var(--md-sys-color-on-success-container);
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .search-bar-container {
+            margin-bottom: 14px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 16px;
+            padding-left: 40px;
+            border-radius: var(--md-shape-corner-full);
+            border: 1px solid var(--md-sys-color-outline);
+            background-color: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--md-sys-color-primary);
+            box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            fill: var(--md-sys-color-on-surface-variant);
+            width: 18px;
+            height: 18px;
+        }
+
+        .keyword-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 440px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .keyword-item {
+            background-color: var(--md-sys-color-surface);
+            border-radius: var(--md-shape-corner-medium);
+            padding: 12px 16px;
+            border-left: 4px solid var(--md-sys-color-primary);
+            box-shadow: 0 2px 4px var(--md-sys-color-shadow);
+        }
+
+        .keyword-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--md-sys-color-primary);
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .keyword-category {
+            font-size: 0.72rem;
+            background: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            padding: 2px 8px;
+            border-radius: var(--md-shape-corner-full);
+            font-weight: 700;
+        }
+
+        .keyword-desc {
+            font-size: 0.88rem;
+            color: var(--md-sys-color-on-surface-variant);
+            line-height: 1.4;
+        }
+
+        .keyword-formula {
+            margin-top: 6px;
+            font-family: monospace;
+            background-color: var(--md-sys-color-surface-variant);
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            font-weight: 700;
+            color: var(--md-sys-color-on-surface-variant);
+            font-size: 0.85rem;
+        }
+
+        .bottom-nav {
+            height: 64px;
+            background-color: var(--md-sys-color-surface);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -2px 8px var(--md-sys-color-shadow);
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            background: transparent;
+            border: none;
+            color: var(--md-sys-color-on-surface-variant);
+            cursor: pointer;
+            padding: 4px 12px;
+            border-radius: var(--md-shape-corner-full);
+            transition: all 0.2s;
+            text-decoration: none;
+            flex: 1;
+            max-width: 24%;
+        }
+
+        .nav-item.active {
+            color: var(--md-sys-color-on-primary-container);
+        }
+
+        .nav-icon-wrapper {
+            width: 44px;
+            height: 26px;
+            border-radius: var(--md-shape-corner-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+
+        .nav-item.active .nav-icon-wrapper {
+            background-color: var(--md-sys-color-primary-container);
+        }
+
+        .nav-item svg {
+            fill: currentColor;
+            width: 20px;
+            height: 20px;
+        }
+
+        .nav-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-dialog {
+            background-color: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+            padding: 24px;
+            border-radius: var(--md-shape-corner-extra-large);
+            max-width: 440px;
+            width: 90%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            text-align: center;
+            animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--md-sys-color-outline-variant);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body data-theme="day">
+
+    <header class="app-bar">
+        <div class="brand-container">
+            <div class="mascot-avatar" id="mascotAvatarHeader" title="Beam Bot: Tap to hear tips!">
+                <svg width="28" height="28" viewBox="0 0 100 100" id="headerMascotSvg">
+                    <circle cx="50" cy="50" r="42" fill="var(--md-sys-color-primary)"/>
+                    <circle cx="36" cy="42" r="7" fill="#FFF"/>
+                    <circle cx="64" cy="42" r="7" fill="#FFF"/>
+                    <circle cx="36" cy="42" r="3" fill="#000"/>
+                    <circle cx="64" cy="42" r="3" fill="#000"/>
+                    <path d="M 35 64 Q 50 78 65 64" stroke="#FFF" stroke-width="5" fill="none" stroke-linecap="round"/>
+                    <line x1="50" y1="8" x2="50" y2="2" stroke="var(--md-sys-color-primary)" stroke-width="4"/>
+                    <circle cx="50" cy="2" r="5" fill="var(--md-sys-color-tertiary)"/>
+                </svg>
+            </div>
+            <div>
+                <h1 class="app-title">EM Waves Study Quest <span style="font-size: 0.75em; font-weight: 600; opacity: 0.85; margin-left: 4px;">by Papa Lim</span></h1>
+                <p class="app-subtitle">Chp 11.2 (Sci Phy) / 13.2 (Phy) What are the uses and dangers of Electromagnetic waves</p>
+            </div>
+        </div>
+
+        <div class="top-controls">
+            <div class="currency-badge" title="Quantum Coins">
+                <span>💎</span>
+                <span id="coinsCount">0</span>
+            </div>
+
+            <div class="streak-badge" title="Daily Streak">
+                <span>⚡</span>
+                <span id="streakCount">1</span>
+            </div>
+
+            <button class="icon-btn" id="themeToggleBtn" aria-label="Toggle Night and Day Theme">
+                <span id="themeIcon">☀️</span>
+            </button>
+
+            <button class="icon-btn" id="soundToggleBtn" aria-label="Toggle Audio Effects">
+                <span id="soundIcon">🔊</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <!-- QUEST TAB -->
+        <section class="tab-content active" id="tab-game">
+            <div class="mode-selector">
+                <button class="mode-btn active" id="modeBossBtn">⚔️ Boss Rush</button>
+                <button class="mode-btn" id="modeBlitzBtn">⏱️ Speed Blitz (60s)</button>
+            </div>
+
+            <div class="game-header-bar">
+                <div class="stat-box">
+                    <span class="stat-lbl">Score (XP)</span>
+                    <span class="stat-val" id="gameScore">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-lbl" id="timerLabel">Level</span>
+                    <span class="stat-val" id="gameLevel">1</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-lbl">Combo</span>
+                    <span class="stat-val" id="gameStreak">1x</span>
+                </div>
+            </div>
+
+            <!-- Main Split Layout: Question Left, Boss Right -->
+            <div class="quest-battle-grid">
+                
+                <!-- LEFT COLUMN: Question Panel & Mascot Speech -->
+                <div class="quest-left-panel" id="questionPanel">
+                    <div class="mascot-speech-box">
+                        <svg class="mascot-face" id="mascotDynamicFace" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" fill="var(--md-sys-color-primary)"/>
+                            <circle cx="35" cy="40" r="8" fill="#FFF"/>
+                            <circle cx="65" cy="40" r="8" fill="#FFF"/>
+                            <circle cx="37" cy="40" r="3" fill="#000"/>
+                            <circle cx="67" cy="40" r="3" fill="#000"/>
+                            <path id="mascotMouth" d="M 32 65 Q 50 80 68 65" stroke="#FFF" stroke-width="6" fill="none" stroke-linecap="round"/>
+                        </svg>
+                        <div class="speech-text" id="mascotMessage">
+                            Welcome Sec 3 Scholar! Defeat hazard monsters by mastering the applications & dangers of EM waves!
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">
+                                <span>🎯</span> Question <span id="qCurrentNum">1</span> / <span id="qTotalNum">12</span>
+                            </span>
+                            <button class="btn-action btn-secondary" id="hintBtn" style="padding: 4px 12px; font-size: 0.8rem;">💡 Hint</button>
+                        </div>
+
+                        <div class="question-card">
+                            <div class="question-text" id="questionText">Loading question...</div>
+                        </div>
+
+                        <div class="options-grid" id="optionsContainer">
+                            <!-- Dynamic option buttons -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: Cute Monster Boss Panel & Health Bars -->
+                <div class="quest-right-panel" id="bossContainer">
+                    <div class="boss-panel-card" id="bossCardElement">
+                        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                            <span style="font-weight: 800; font-size: 1rem; color: var(--md-sys-color-tertiary);" id="bossName">👾 Boss: RFID Buggler</span>
+                            <span style="font-size: 0.78rem; font-weight: 800; background: var(--md-sys-color-tertiary-container); color: var(--md-sys-color-on-tertiary-container); padding: 2px 8px; border-radius: 99px;" id="bossStageBadge">STAGE 1/6</span>
+                        </div>
+
+                        <div class="boss-avatar-wrapper" id="bossAvatarWrapper">
+                            <!-- Floating Damage Number Overlay -->
+                            <div id="dmgOverlay"></div>
+
+                            <!-- Cute Monster Boss SVG -->
+                            <svg class="boss-svg-entity boss-entrance-anim" id="bossSvgGraphic" viewBox="0 0 100 100">
+                                <!-- Dynamic Cute SVG filled via JS -->
+                            </svg>
+                        </div>
+
+                        <!-- Boss Health Bar -->
+                        <div class="boss-hp-bar-container">
+                            <div class="hp-label-row">
+                                <span style="color: var(--md-sys-color-error);">👾 MONSTER HP</span>
+                                <span id="bossHpText" style="color: var(--md-sys-color-error);">100 / 100</span>
+                            </div>
+                            <div class="hp-bar-outer">
+                                <div class="boss-hp-fill" id="bossHpFill"></div>
+                            </div>
+                        </div>
+
+                        <!-- User Shield / HP Bar -->
+                        <div class="user-hp-bar-container">
+                            <div class="hp-label-row">
+                                <span style="color: var(--md-sys-color-success);">🛡️ PLAYER SHIELD</span>
+                                <span id="userHpText" style="color: var(--md-sys-color-success);">100 / 100</span>
+                            </div>
+                            <div class="hp-bar-outer">
+                                <div class="user-hp-fill" id="userHpFill"></div>
+                            </div>
+                        </div>
+
+                        <!-- Battle Activity Log -->
+                        <div class="combat-log-box" id="combatLog">
+                            ⚔️ Battle Started! Master EM applications & dangers to attack the hazard monster!
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- MATCHING GAME TAB -->
+        <section class="tab-content" id="tab-sort">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">🧩 EM Waves Applications & Dangers Matcher</span>
+                    <button class="btn-action btn-secondary" id="resetMatchBtn" style="padding: 4px 12px; font-size: 0.8rem;">↺ Reset</button>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--md-sys-color-on-surface-variant); margin-bottom: 12px;">
+                    Select an <strong>EM Wave Region</strong> on the left, then tap its matching <strong>Primary Application or Danger</strong> on the right!
+                </p>
+
+                <div class="matching-grid">
+                    <div style="display: flex; flex-direction: column; gap: 10px;" id="matchLeftCol">
+                        <!-- Dynamic Wave Regions -->
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 10px;" id="matchRightCol">
+                        <!-- Dynamic Applications/Dangers -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAB / VISUALIZER TAB -->
+        <section class="tab-content" id="tab-lab">
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">🔬 Tissue Penetration & Ionisation Simulator</span>
+                    </div>
+                    <p style="font-size: 0.82rem; color: var(--md-sys-color-on-surface-variant); margin-bottom: 8px;">
+                        Select an EM Wave to observe how its frequency affects human tissue penetration and cell ionisation.
+                    </p>
+                    <div class="canvas-container">
+                        <canvas id="penetrationCanvas"></canvas>
+                    </div>
+                    <div class="slider-control">
+                        <label for="waveSelectSlider">EM Wave Region:</label>
+                        <input type="range" id="waveSelectSlider" min="0" max="6" step="1" value="0">
+                        <span id="selectedWaveName" style="font-weight: 700; min-width: 90px; color: var(--md-sys-color-primary);">Radio Waves</span>
+                    </div>
+                    
+                    <div id="penetrationInfoCard" style="margin-top: 10px; background: var(--md-sys-color-surface); padding: 12px; border-radius: 12px; border: 1px solid var(--md-sys-color-outline-variant);">
+                        <h4 style="color: var(--md-sys-color-primary); margin-bottom: 4px;" id="penTitle">Radio Waves</h4>
+                        <p style="font-size: 0.82rem; margin-bottom: 4px;" id="penNature"><strong>Nature:</strong> Non-Ionising Radiation (Low Energy Photons)</p>
+                        <p style="font-size: 0.82rem; margin-bottom: 4px;" id="penEffect"><strong>Tissue Interaction:</strong> Passes through body without knocking electrons from atoms.</p>
+                        <p style="font-size: 0.82rem; color: var(--md-sys-color-success);" id="penStatus"><strong>Safety Rating:</strong> Safe at standard environmental exposure levels.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">📊 Human Exposure to Ionising Radiation</span>
+                    </div>
+                    <p style="font-size: 0.82rem; color: var(--md-sys-color-on-surface-variant); margin-bottom: 8px;">
+                        Breakdown of average natural and man-made background ionising radiation sources.
+                    </p>
+                    <div class="canvas-container">
+                        <canvas id="radiationPieCanvas"></canvas>
+                    </div>
+                    <div style="font-size: 0.8rem; color: var(--md-sys-color-on-surface-variant); line-height: 1.4; background: var(--md-sys-color-surface); padding: 10px; border-radius: 8px;">
+                        💡 <strong>O-Level Focus:</strong> Natural background sources (Radon gas from ground ~43%, Earth Gamma ~15%, Cosmic rays ~13%) make up over 80% of human radiation exposure!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KEYWORDS TAB -->
+        <section class="tab-content" id="tab-keywords">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">📚 Sec 3 Ch 11.2 Master Keyword Glossary</span>
+                </div>
+                <p style="font-size: 0.82rem; color: var(--md-sys-color-on-surface-variant); margin-bottom: 12px;">
+                    Search key terms, applications, optical fiber mechanisms, medical scans, and ionising risks!
+                </p>
+
+                <div class="search-bar-container">
+                    <svg class="search-icon" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                    <input type="text" class="search-input" id="keywordSearch" placeholder="Search terms (e.g., RFID, Endoscope, CT Scan, Ionising, Gamma Knife, Sunburn)...">
+                </div>
+
+                <div class="keyword-list" id="keywordListContainer"></div>
+            </div>
+        </section>
+    </main>
+
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-tab="tab-game">
+            <div class="nav-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 9 18.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+            </div>
+            <span class="nav-label">Quest</span>
+        </button>
+
+        <button class="nav-item" data-tab="tab-sort">
+            <div class="nav-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+            </div>
+            <span class="nav-label">Matcher</span>
+        </button>
+
+        <button class="nav-item" data-tab="tab-lab">
+            <div class="nav-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 7.48 2 13c0 3.87 2.21 7.23 5.5 8.95.4.21.9-.09.9-.54v-1.65c0-.44-.36-.8-.8-.94C5.1 18.06 4 15.7 4 13c0-4.41 3.59-8 8-8s8 3.59 8 8c0 2.7-1.1 5.06-3.6 5.82-.44.14-.8.5-.8.94v1.65c0 .45.5.75.9.54C19.79 20.23 22 16.87 22 13c0-5.52-4.48-10-10-10z"/></svg>
+            </div>
+            <span class="nav-label">Lab</span>
+        </button>
+
+        <button class="nav-item" data-tab="tab-keywords">
+            <div class="nav-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+            </div>
+            <span class="nav-label">Keywords</span>
+        </button>
+    </nav>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-dialog">
+            <h2 style="font-size: 1.25rem; margin-bottom: 10px;" id="modalTitle">Notice</h2>
+            <p style="font-size: 0.9rem; margin-bottom: 18px; color: var(--md-sys-color-on-surface-variant);" id="modalBody">Dialog message text.</p>
+            <button class="btn-action" id="modalCloseBtn">Got it!</button>
+        </div>
+    </div>
+
+    <script>
+        class SoundEngine {
+            constructor() {
+                this.ctx = null;
+                this.muted = false;
+            }
+
+            init() {
+                if (!this.ctx) {
+                    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                    if (AudioCtx) this.ctx = new AudioCtx();
+                }
+            }
+
+            play(type) {
+                if (this.muted) return;
+                this.init();
+                if (!this.ctx) return;
+
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+
+                const now = this.ctx.currentTime;
+
+                if (type === 'click') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(750, now);
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.04);
+                    osc.start(now);
+                    osc.stop(now + 0.04);
+                } else if (type === 'correct') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now);
+                    osc.frequency.setValueAtTime(659.25, now + 0.08);
+                    osc.frequency.setValueAtTime(783.99, now + 0.16);
+                    gain.gain.setValueAtTime(0.12, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                } else if (type === 'boss_hit') {
+                    osc.type = 'square';
+                    osc.frequency.setValueAtTime(180, now);
+                    osc.frequency.exponentialRampToValueAtTime(60, now + 0.25);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+                    osc.start(now);
+                    osc.stop(now + 0.25);
+                } else if (type === 'user_hit') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(140, now);
+                    osc.frequency.linearRampToValueAtTime(70, now + 0.3);
+                    gain.gain.setValueAtTime(0.25, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                } else if (type === 'boss_spawn') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(220, now);
+                    osc.frequency.setValueAtTime(330, now + 0.1);
+                    osc.frequency.setValueAtTime(440, now + 0.2);
+                    osc.frequency.setValueAtTime(880, now + 0.35);
+                    gain.gain.setValueAtTime(0.22, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+                    osc.start(now);
+                    osc.stop(now + 0.5);
+                } else if (type === 'wrong') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now);
+                    osc.frequency.linearRampToValueAtTime(110, now + 0.22);
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.22);
+                    osc.start(now);
+                    osc.stop(now + 0.22);
+                } else if (type === 'win') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(440, now);
+                    osc.frequency.setValueAtTime(554.37, now + 0.08);
+                    osc.frequency.setValueAtTime(659.25, now + 0.16);
+                    osc.frequency.setValueAtTime(880, now + 0.24);
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+                    osc.start(now);
+                    osc.stop(now + 0.4);
+                }
+            }
+        }
+
+        const sounds = new SoundEngine();
+
+        // 12 Syllabus-aligned O-Level Questions strictly based on Chapter 11.2 PPT Slides
+        const PHYSICS_QUESTIONS = [
+            {
+                q: "According to Chapter 11.2, how does a Radio Frequency Identification (RFID) tag send stored data to a reader?",
+                options: [
+                    "It receives radio waves from the reader and uses that energy to transmit data back.",
+                    "It relies on an internal battery to emit continuous UV beams.",
+                    "It reflects visible laser light through flexible optical glass fibers.",
+                    "It creates acoustic sound pulses when heated by microwaves."
+                ],
+                answer: 0,
+                hint: "RFID tags absorb energy from the reader's incoming radio wave to power their transmission back! (PPT Slide 25)"
+            },
+            {
+                q: "Why are 3 to 30 MHz radio waves particularly useful for long-distance communications across thousands of kilometers?",
+                options: [
+                    "They can be reflected repeatedly off the Earth's ionosphere and the ground.",
+                    "They pass straight through the ionosphere into deep space without attenuation.",
+                    "They travel at twice the speed of light in the atmosphere.",
+                    "They knock electrons out of air molecules to form conductive channels."
+                ],
+                answer: 0,
+                hint: "Radio waves in the 3 to 30 MHz band bounce between the ionosphere and the ground to travel long distances! (PPT Slide 23)"
+            },
+            {
+                q: "Why are microwave oven frequencies specifically chosen for cooking food?",
+                options: [
+                    "To enhance energy transfer directly to water molecules, raising internal thermal energy.",
+                    "To knock electrons out of food atoms and ionise food cells.",
+                    "To reflect off food surfaces to produce visible light sparks.",
+                    "To lower the temperature of surrounding air so food cooks faster."
+                ],
+                answer: 0,
+                hint: "Microwaves resonate with water molecules in food, increasing internal kinetic energy and temperature! (PPT Slide 27)"
+            },
+            {
+                q: "How does a GPS device work out its exact geographical location on Earth?",
+                options: [
+                    "By processing microwave signals received simultaneously from at least 3 satellites.",
+                    "By reflecting infrared laser beams off upper atmosphere clouds.",
+                    "By measuring cosmic radiation levels using radio telescopes.",
+                    "By detecting visible light pulses sent from ground towers."
+                ],
+                answer: 0,
+                hint: "Microwave signals from at least three GPS satellites allow a receiver device to determine its location! (PPT Slide 28)"
+            },
+            {
+                q: "How do non-contact infrared (IR) thermometers and intruder alarms detect human body temperature?",
+                options: [
+                    "They detect the intensity and characteristics of thermal IR radiation emitted by skin.",
+                    "They fire high-energy X-ray beams into internal organs.",
+                    "They shine UV light to make skin fluorescent pigments glow green.",
+                    "They measure radio waves bouncing off human bones."
+                ],
+                answer: 0,
+                hint: "All warm objects naturally emit thermal Infrared (IR) radiation detected by thermoreceptors and IR sensors! (PPT Slide 31)"
+            },
+            {
+                q: "In endoscopy and laparoscopy ('keyhole' surgery), how is visible light transmitted inside hollow organs?",
+                options: [
+                    "By total internal reflection inside flexible optical glass fibers.",
+                    "By firing high-frequency gamma rays through keyhole incisions.",
+                    "By using radio wave antennas wrapped around surgical tools.",
+                    "By converting visible light into microwave pulses inside the bloodstream."
+                ],
+                answer: 0,
+                hint: "Light pulses bounce repeatedly inside glass optical fibers via total internal reflection to illuminate organs! (PPT Slides 33-35)"
+            },
+            {
+                q: "Which specific light source is used by dentists to cure and harden soft tooth cavity fillings?",
+                options: [
+                    "Blue light from a Light Emitting Diode (LED).",
+                    "Infrared radiation from electrically heated metal rods.",
+                    "Gamma rays emitted by radioactive cobalt sources.",
+                    "Ultraviolet C rays inside a vacuum chamber."
+                ],
+                answer: 0,
+                hint: "Blue LED light triggers a polymerisation chemical reaction to harden soft filling material! (PPT Slide 37)"
+            },
+            {
+                q: "How is Ultraviolet (UV) light utilized as an anti-forgery feature on Singapore banknotes (e.g. $50 note)?",
+                options: [
+                    "Special security pigments absorb UV light and fluoresce (glow) under UV lamps.",
+                    "UV rays burn microscopic hole patterns into fake banknotes.",
+                    "UV light converts paper pulp into magnetic metal strips.",
+                    "UV rays reflect off the note to calculate its thickness like radar."
+                ],
+                answer: 0,
+                hint: "Fluorescent security ink printed on genuine banknotes glows visibly under UV light! (PPT Slide 39)"
+            },
+            {
+                q: "How does Computed Tomography (CT Scan) differ from a standard single 2D X-ray image?",
+                options: [
+                    "A rotating X-ray scanner collects slice data at multiple angles to digitally construct 3D images.",
+                    "CT scans use non-ionising radio waves instead of high-frequency X-rays.",
+                    "CT scans rely exclusively on thermal infrared radiation emitted by internal organs.",
+                    "CT scans require no computer processing and produce instant paper photos."
+                ],
+                answer: 0,
+                hint: "CT scanners take multiple X-ray slices around the patient to digitally form a detailed 3D image! (PPT Slide 42)"
+            },
+            {
+                q: "In Gamma Knife radiosurgery for brain tumors, how are cancer cells destroyed while sparing surrounding healthy tissue?",
+                options: [
+                    "Multiple precise beams of high-energy gamma rays intersect at the exact location of the tumor.",
+                    "Low-frequency radio waves heat the skull until the tumor melts.",
+                    "Infrared heat lamps burn the skin surface to sterilize tissue.",
+                    "Blue LED light is guided into the brain via flexible endoscopes."
+                ],
+                answer: 0,
+                hint: "Multiple focused gamma ray beams intersect precisely at the tumor target to kill cancer cells! (PPT Slide 44)"
+            },
+            {
+                q: "Why are high-frequency EM waves (UV, X-rays, Gamma) classified as 'Ionising Radiation'?",
+                options: [
+                    "They carry enough energy to knock bound electrons out of atoms, creating reactive charged ions.",
+                    "They carry positive electrical charges through bodily tissues.",
+                    "They travel faster than 3.0 × 10⁸ m/s in biological tissue.",
+                    "They produce acoustic sound vibrations inside human ears."
+                ],
+                answer: 0,
+                hint: "High-energy EM waves eject electrons from atoms, creating ions that disrupt chemical reactions and cell processes! (PPT Slide 50)"
+            },
+            {
+                q: "According to the Chapter 11.2 radiation chart, what is the largest natural source of human exposure to ionising radiation?",
+                options: [
+                    "Radon gas naturally released from the ground (~43%).",
+                    "Medical CT scans and X-ray imaging (~20%).",
+                    "Gamma rays emitted from Earth rocks (~15%).",
+                    "Cosmic rays from deep outer space (~13%)."
+                ],
+                answer: 0,
+                hint: "Naturally occurring radon gas rising from soil/ground accounts for ~43% of average human exposure! (PPT Slide 49)"
+            }
+        ];
+
+        // Cute Monster Bosses designed for Ch 11.2 (EM Uses & Dangers)
+        const BOSS_ROSTER = [
+            {
+                name: "👾 RFID Buggler",
+                maxHp: 100,
+                color: "#60A5FA",
+                svg: `<circle cx="50" cy="55" r="35" fill="#60A5FA"/>
+                      <circle cx="50" cy="55" r="28" fill="#93C5FD"/>
+                      <path d="M 25 30 Q 50 15 75 30" stroke="#1E40AF" stroke-width="4" fill="none" stroke-linecap="round"/>
+                      <path d="M 32 20 Q 50 8 68 20" stroke="#3B82F6" stroke-width="3" fill="none" stroke-linecap="round"/>
+                      <circle cx="38" cy="50" r="9" fill="#FFF"/><circle cx="62" cy="50" r="9" fill="#FFF"/>
+                      <circle cx="40" cy="50" r="4.5" fill="#1E293B"/><circle cx="64" cy="50" r="4.5" fill="#1E293B"/>
+                      <circle cx="42" cy="47" r="1.5" fill="#FFF"/><circle cx="66" cy="47" r="1.5" fill="#FFF"/>
+                      <circle cx="30" cy="58" r="4" fill="#F472B6" opacity="0.6"/><circle cx="70" cy="58" r="4" fill="#F472B6" opacity="0.6"/>
+                      <path d="M 42 62 Q 50 68 58 62" stroke="#1E293B" stroke-width="3" fill="none" stroke-linecap="round"/>`
+            },
+            {
+                name: "🛰️ Micro-Muncher",
+                maxHp: 120,
+                color: "#34D399",
+                svg: `<rect x="18" y="22" width="64" height="60" rx="16" fill="#34D399"/>
+                      <rect x="25" y="28" width="50" height="48" rx="12" fill="#065F46"/>
+                      <circle cx="38" cy="46" r="8" fill="#FFF"/><circle cx="62" cy="46" r="8" fill="#FFF"/>
+                      <circle cx="39" cy="46" r="4" fill="#064E3B"/><circle cx="63" cy="46" r="4" fill="#064E3B"/>
+                      <path d="M 40 58 Q 50 66 60 58" stroke="#A7F3D0" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                      <circle cx="50" cy="14" r="6" fill="#F59E0B"/>
+                      <line x1="50" y1="22" x2="50" y2="18" stroke="#D97706" stroke-width="3"/>`
+            },
+            {
+                name: "🌡️ Thermo-Flamelet",
+                maxHp: 140,
+                color: "#FB923C",
+                svg: `<path d="M 50 12 Q 72 32 82 54 Q 90 80 50 86 Q 10 80 18 54 Q 28 32 50 12 Z" fill="#FB923C"/>
+                      <path d="M 50 22 Q 65 38 72 54 Q 78 74 50 78 Q 22 74 28 54 Q 35 38 50 22 Z" fill="#FDBA74"/>
+                      <circle cx="38" cy="52" r="9" fill="#FFF"/><circle cx="62" cy="52" r="9" fill="#FFF"/>
+                      <circle cx="39" cy="52" r="4.5" fill="#7C2D12"/><circle cx="63" cy="52" r="4.5" fill="#7C2D12"/>
+                      <circle cx="41" cy="49" r="1.8" fill="#FFF"/><circle cx="65" cy="49" r="1.8" fill="#FFF"/>
+                      <ellipse cx="28" cy="60" rx="5" ry="3" fill="#F43F5E" opacity="0.6"/>
+                      <ellipse cx="72" cy="60" rx="5" ry="3" fill="#F43F5E" opacity="0.6"/>
+                      <path d="M 44 62 Q 50 72 56 62 Z" fill="#991B1B"/>`
+            },
+            {
+                name: "☀️ UV Sun-Biter",
+                maxHp: 160,
+                color: "#A78BFA",
+                svg: `<path d="M 50 10 L 60 32 L 85 35 L 66 52 L 72 78 L 50 65 L 28 78 L 34 52 L 15 35 L 40 32 Z" fill="#A78BFA" stroke="#7C3AED" stroke-width="3" stroke-linejoin="round"/>
+                      <!-- Cool Sunglasses -->
+                      <rect x="28" y="40" width="20" height="12" rx="4" fill="#1E1B4B"/>
+                      <rect x="52" y="40" width="20" height="12" rx="4" fill="#1E1B4B"/>
+                      <line x1="48" y1="44" x2="52" y2="44" stroke="#1E1B4B" stroke-width="3"/>
+                      <path d="M 42 60 Q 50 66 58 60" stroke="#4C1D95" stroke-width="3" fill="none" stroke-linecap="round"/>`
+            },
+            {
+                name: "🦴 X-Ray Skelly",
+                maxHp: 180,
+                color: "#38BDF8",
+                svg: `<rect x="22" y="20" width="56" height="60" rx="20" fill="#0284C7"/>
+                      <circle cx="38" cy="42" r="10" fill="#0F172A"/>
+                      <circle cx="62" cy="42" r="10" fill="#0F172A"/>
+                      <circle cx="38" cy="42" r="4" fill="#38BDF8"/>
+                      <circle cx="62" cy="42" r="4" fill="#38BDF8"/>
+                      <!-- Skeleton ribs preview -->
+                      <path d="M 35 60 L 65 60 M 40 66 L 60 66 M 45 72 L 55 72" stroke="#E0F2FE" stroke-width="3" stroke-linecap="round"/>`
+            },
+            {
+                name: "⚛️ Gamma Ionizer",
+                maxHp: 200,
+                color: "#F43F5E",
+                svg: `<circle cx="50" cy="50" r="36" fill="#F43F5E"/>
+                      <circle cx="50" cy="50" r="30" fill="#FB7185"/>
+                      <!-- Atomic hazard symbol rings -->
+                      <ellipse cx="50" cy="50" rx="42" ry="14" fill="none" stroke="#FBBF24" stroke-width="3" transform="rotate(30 50 50)"/>
+                      <ellipse cx="50" cy="50" rx="42" ry="14" fill="none" stroke="#FBBF24" stroke-width="3" transform="rotate(-30 50 50)"/>
+                      <circle cx="38" cy="46" r="8" fill="#FFF"/><circle cx="62" cy="46" r="8" fill="#FFF"/>
+                      <circle cx="39" cy="46" r="4" fill="#881337"/><circle cx="63" cy="46" r="4" fill="#881337"/>
+                      <path d="M 43 58 Q 50 66 57 58" stroke="#881337" stroke-width="3" fill="none" stroke-linecap="round"/>`
+            }
+        ];
+
+        // Matching Pairs Database for Matcher Tab
+        const MATCHING_PAIRS = [
+            { region: "Radio Waves", desc: "RFID tags, TV/Radio broadcasts & Police bands" },
+            { region: "Microwaves", desc: "Satellite TV, Mobile phones, GPS & Oven cooking" },
+            { region: "Infrared (IR)", desc: "Thermal cameras, Remote controls & IR thermometers" },
+            { region: "Visible Light", desc: "Optical fibers in endoscopes & Photography" },
+            { region: "Ultraviolet (UV)", desc: "Water sterilization, Banknote fraud check & Sunbeds" },
+            { region: "X-Rays", desc: "Bone fracture scanning & Airport luggage security" },
+            { region: "Gamma Rays", desc: "Gamma Knife cancer therapy & Food sterilization" }
+        ];
+
+        // Lab Tissue Penetration Data
+        const TISSUE_DATA = [
+            {
+                name: "Radio Waves",
+                nature: "Non-Ionising Radiation (Low Energy Photons)",
+                effect: "Passes completely through body tissue without knocking electrons off atoms.",
+                status: "Safe at standard environmental intensity levels.",
+                statusColor: "var(--md-sys-color-success)",
+                depth: 100, // % penetration through canvas height
+                ionise: false
+            },
+            {
+                name: "Microwaves",
+                nature: "Non-Ionising Thermal Radiation",
+                effect: "Absorbed by internal body water molecules, causing thermal heating.",
+                status: "Harmful at high intensities (internal tissue heating).",
+                statusColor: "var(--md-sys-color-gold)",
+                depth: 75,
+                ionise: false
+            },
+            {
+                name: "Infrared (IR)",
+                nature: "Non-Ionising Thermal Radiation",
+                effect: "Absorbed primarily by skin surface thermoreceptors; causes skin warmth.",
+                status: "Can cause skin thermal burns at high exposure.",
+                statusColor: "var(--md-sys-color-gold)",
+                depth: 35,
+                ionise: false
+            },
+            {
+                name: "Visible Light",
+                nature: "Non-Ionising Optical Spectrum",
+                effect: "Absorbed by skin and retina; enables vision and optical fiber endoscopy.",
+                status: "Safe, but high-intensity laser beams can cause retinal blindness.",
+                statusColor: "var(--md-sys-color-success)",
+                depth: 20,
+                ionise: false
+            },
+            {
+                name: "Ultraviolet (UV)",
+                nature: "Ionising Radiation (High Frequency Photons)",
+                effect: "Penetrates epidermis skin layer; knocks electrons out to ionise skin cells.",
+                status: "Causes sunburn, eye cataracts, and skin cancer risk.",
+                statusColor: "var(--md-sys-color-error)",
+                depth: 30,
+                ionise: true
+            },
+            {
+                name: "X-Rays",
+                nature: "High-Energy Ionising Radiation",
+                effect: "Penetrates soft tissues heavily, absorbed by dense bone structures.",
+                status: "High hazard: causes cell mutation, DNA damage, and cancer.",
+                statusColor: "var(--md-sys-color-error)",
+                depth: 85,
+                ionise: true
+            },
+            {
+                name: "Gamma Rays",
+                nature: "Ultra High-Energy Ionising Radiation",
+                effect: "Penetrates deep into human body, ejecting electrons and destroying cancer/living cells.",
+                status: "Extremely dangerous: causes severe radiation sickness & DNA mutations.",
+                statusColor: "var(--md-sys-color-error)",
+                depth: 100,
+                ionise: true
+            }
+        ];
+
+        // Master Glossary Bank
+        const KEYWORDS_BANK = [
+            {
+                term: "Radio Frequency Identification (RFID)",
+                category: "Radio Waves",
+                desc: "Small circuit tags that receive radio wave energy from a reader device to transmit stored identification data back wirelessly.",
+                formula: "Passive power absorption"
+            },
+            {
+                term: "Microwave Oven Energy Transfer",
+                category: "Microwaves",
+                desc: "Microwave frequencies are tuned to resonate with water molecules in food, increasing their thermal kinetic energy.",
+                formula: "Water Molecule Heating"
+            },
+            {
+                term: "Ionosphere Penetration",
+                category: "Microwaves vs Radio",
+                desc: "Radio waves (3-30 MHz) reflect off the Earth's ionosphere for ground communication. Microwaves penetrate the ionosphere for satellite GPS.",
+                formula: "Satellite Transmission"
+            },
+            {
+                term: "Infrared Thermography",
+                category: "Infrared",
+                desc: "Detects thermal infrared radiation emitted naturally by body skin to construct 2D temperature maps for intruder alarms & fever checks.",
+                formula: "Thermal Radiation"
+            },
+            {
+                term: "Total Internal Reflection (TIR)",
+                category: "Visible Light",
+                desc: "Light signals bounce repeatedly inside flexible glass optical fibers without escaping, used in medical endoscopes & telecommunications.",
+                formula: "n = 1 / sin(c)"
+            },
+            {
+                term: "Endoscopy & Laparoscopy",
+                category: "Visible Light Use",
+                desc: "Keyhole surgery techniques where flexible optical fibers channel light into hollow organs to illuminate internal surgical sites.",
+                formula: "Medical Optics"
+            },
+            {
+                term: "Banknote Anti-Forgery UV Feature",
+                category: "Ultraviolet",
+                desc: "Fluorescent security ink printed on currency notes absorbs invisible UV light and re-emits visible glowing light patterns.",
+                formula: "Fluorescence"
+            },
+            {
+                term: "Computed Tomography (CT Scan)",
+                category: "X-Rays",
+                desc: "A rotating X-ray scanner collects multiple 2D body slice projections and uses computer algorithms to construct a detailed 3D image.",
+                formula: "3D X-Ray Reconstruction"
+            },
+            {
+                term: "Gamma Knife Radiotherapy",
+                category: "Gamma Rays",
+                desc: "A non-invasive medical procedure where multiple focused beams of high-energy gamma rays intersect at a brain tumor to destroy cancer cells.",
+                formula: "High-Precision Radiotherapy"
+            },
+            {
+                term: "Ionising Radiation Hazard",
+                category: "Radiation Hazard",
+                desc: "High frequency EM waves (UV, X-Rays, Gamma) carry photon energy high enough to knock bound electrons out of atoms, forming reactive ions.",
+                formula: "Electron Knockout ➔ Cell Mutation"
+            },
+            {
+                term: "Natural Background Radiation",
+                category: "Environmental",
+                desc: "Over 80% of average human ionising radiation exposure comes from natural sources: Radon gas from ground (43%), Earth Gamma (15%), Cosmic (13%).",
+                formula: "Radon Gas ~43%"
+            }
+        ];
+
+        let state = {
+            score: 0,
+            coins: 0,
+            level: 1,
+            streak: 1,
+            totalAnswered: 0,
+            correctAnswered: 0,
+            currentQIndex: 0,
+            theme: 'day',
+            soundEnabled: true,
+            gameMode: 'boss',
+            blitzTimeLeft: 60,
+            bossIndex: 0,
+            bossHp: 100,
+            bossMaxHp: 100,
+            userHp: 100
+        };
+
+        let blitzTimerId = null;
+        let selectedMatchRegion = null;
+        let selectedMatchDesc = null;
+
+        function renderBossVisual() {
+            const currentBoss = BOSS_ROSTER[state.bossIndex % BOSS_ROSTER.length];
+            const svgElement = document.getElementById('bossSvgGraphic');
+            
+            document.getElementById('bossName').textContent = currentBoss.name;
+            document.getElementById('bossStageBadge').textContent = `STAGE ${state.bossIndex + 1}/${BOSS_ROSTER.length}`;
+            
+            svgElement.innerHTML = currentBoss.svg;
+            
+            // Update Hp Bars
+            const bossPercent = Math.max(0, Math.round((state.bossHp / state.bossMaxHp) * 100));
+            document.getElementById('bossHpFill').style.width = bossPercent + '%';
+            document.getElementById('bossHpText').textContent = `${state.bossHp} / ${state.bossMaxHp}`;
+
+            const userPercent = Math.max(0, state.userHp);
+            document.getElementById('userHpFill').style.width = userPercent + '%';
+            document.getElementById('userHpText').textContent = `${state.userHp} / 100`;
+        }
+
+        function triggerBossEntranceAnimation() {
+            sounds.play('boss_spawn');
+            const svgElement = document.getElementById('bossSvgGraphic');
+            svgElement.classList.remove('boss-entrance-anim', 'boss-hit-anim');
+            void svgElement.offsetWidth; // Force Reflow
+            svgElement.classList.add('boss-entrance-anim');
+
+            appendCombatLog(`⚡ HAZARD MONSTER ENTERS: ${BOSS_ROSTER[state.bossIndex % BOSS_ROSTER.length].name}!`);
+        }
+
+        function triggerDamageFloatText(text, isUserDamage) {
+            const overlay = document.getElementById('dmgOverlay');
+            const numDiv = document.createElement('div');
+            numDiv.className = 'floating-dmg-text';
+            numDiv.textContent = text;
+            numDiv.style.color = isUserDamage ? '#EF4444' : '#10B981';
+            numDiv.style.left = (35 + Math.random() * 30) + '%';
+            numDiv.style.top = '40%';
+
+            overlay.appendChild(numDiv);
+            setTimeout(() => {
+                if (numDiv.parentElement) numDiv.parentElement.removeChild(numDiv);
+            }, 1200);
+        }
+
+        function appendCombatLog(msg) {
+            const logBox = document.getElementById('combatLog');
+            const p = document.createElement('div');
+            p.textContent = msg;
+            logBox.prepend(p);
+        }
+
+        function setMascotMood(mood, message) {
+            const mouth = document.getElementById('mascotMouth');
+            const msgBox = document.getElementById('mascotMessage');
+            if (msgBox) msgBox.textContent = message;
+
+            if (!mouth) return;
+            if (mood === 'happy') mouth.setAttribute('d', 'M 32 60 Q 50 85 68 60');
+            else if (mood === 'sad') mouth.setAttribute('d', 'M 32 75 Q 50 55 68 75');
+            else mouth.setAttribute('d', 'M 32 65 Q 50 78 68 65');
+        }
+
+        function loadQuestion() {
+            if (state.currentQIndex >= PHYSICS_QUESTIONS.length) state.currentQIndex = 0;
+
+            const current = PHYSICS_QUESTIONS[state.currentQIndex];
+            document.getElementById('qCurrentNum').textContent = state.currentQIndex + 1;
+            document.getElementById('qTotalNum').textContent = PHYSICS_QUESTIONS.length;
+            document.getElementById('questionText').textContent = current.q;
+
+            const optionsBox = document.getElementById('optionsContainer');
+            optionsBox.innerHTML = '';
+
+            current.options.forEach((optText, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'btn-option';
+                btn.innerHTML = `<span style="font-weight: 800;">${['A', 'B', 'C', 'D'][index]}.</span> ${optText}`;
+                btn.addEventListener('click', () => handleAnswer(index, current.answer, btn));
+                optionsBox.appendChild(btn);
+            });
+
+            setMascotMood('neutral', "Analyze the EM application or danger! Choose the correct option below.");
+        }
+
+        function handleAnswer(selectedIndex, correctIndex, btnElement) {
+            const buttons = document.querySelectorAll('.btn-option');
+            buttons.forEach(b => b.disabled = true);
+
+            state.totalAnswered++;
+
+            if (selectedIndex === correctIndex) {
+                // Correct Answer! Attack the Boss!
+                btnElement.classList.add('correct');
+                sounds.play('boss_hit');
+
+                state.score += 100 * state.streak;
+                state.coins += 10;
+                state.correctAnswered++;
+                state.streak++;
+
+                const dmgAmount = 30 + (state.streak * 5);
+                state.bossHp = Math.max(0, state.bossHp - dmgAmount);
+                
+                const bossSvg = document.getElementById('bossSvgGraphic');
+                bossSvg.classList.remove('boss-hit-anim');
+                void bossSvg.offsetWidth;
+                bossSvg.classList.add('boss-hit-anim');
+
+                triggerDamageFloatText(`-${dmgAmount} HP`, false);
+                appendCombatLog(`💥 CRITICAL HIT! You dealt ${dmgAmount} DMG to the monster!`);
+                setMascotMood('happy', "Direct hit! Physics knowledge neutralizes the hazard!");
+
+                if (state.bossHp === 0) {
+                    setTimeout(() => {
+                        sounds.play('win');
+                        state.level++;
+                        state.coins += 100;
+                        
+                        state.bossIndex++;
+                        const newBoss = BOSS_ROSTER[state.bossIndex % BOSS_ROSTER.length];
+                        state.bossMaxHp = newBoss.maxHp;
+                        state.bossHp = newBoss.maxHp;
+
+                        renderBossVisual();
+                        triggerBossEntranceAnimation();
+
+                        showModal("⚔️ MONSTER DEFEATED!", `Stage ${state.bossIndex} Cleared! Next hazard monster: ${newBoss.name}! +100 💎 Bonus!`);
+                    }, 500);
+                } else {
+                    renderBossVisual();
+                }
+
+            } else {
+                // Wrong Answer! Boss Attacks Player!
+                btnElement.classList.add('incorrect');
+                buttons[correctIndex].classList.add('correct');
+                sounds.play('user_hit');
+
+                state.streak = 1;
+                
+                const userDmg = 20;
+                state.userHp = Math.max(0, state.userHp - userDmg);
+                
+                const questionPanel = document.getElementById('questionPanel');
+                questionPanel.classList.remove('user-hit-anim');
+                void questionPanel.offsetWidth;
+                questionPanel.classList.add('user-hit-anim');
+
+                triggerDamageFloatText(`-${userDmg} SHIELD`, true);
+                appendCombatLog(`⚡ HAZARD ATTACK! Radiation burst dealt ${userDmg} damage to your shield!`);
+                setMascotMood('sad', "Ouch! Counterattacked! Review the core concept and try the next question!");
+
+                if (state.userHp <= 0) {
+                    setTimeout(() => {
+                        showModal("🛡️ Shield Recharging!", "Your shield collapsed! Recharging back to 100 HP...");
+                        state.userHp = 100;
+                        renderBossVisual();
+                    }, 600);
+                } else {
+                    renderBossVisual();
+                }
+            }
+
+            updateUIStats();
+
+            setTimeout(() => {
+                state.currentQIndex++;
+                loadQuestion();
+            }, 1700);
+        }
+
+        function startBlitzTimer() {
+            clearInterval(blitzTimerId);
+            state.blitzTimeLeft = 60;
+            document.getElementById('timerLabel').textContent = 'Time Left';
+            document.getElementById('gameLevel').textContent = '60s';
+
+            blitzTimerId = setInterval(() => {
+                state.blitzTimeLeft--;
+                document.getElementById('gameLevel').textContent = state.blitzTimeLeft + 's';
+
+                if (state.blitzTimeLeft <= 0) {
+                    clearInterval(blitzTimerId);
+                    sounds.play('win');
+                    showModal("⏱️ Blitz Finished!", `Time's up! You scored ${state.score} total XP in 60 seconds!`);
+                    switchGameMode('boss');
+                }
+            }, 1000);
+        }
+
+        function switchGameMode(mode) {
+            state.gameMode = mode;
+            const bossBtn = document.getElementById('modeBossBtn');
+            const blitzBtn = document.getElementById('modeBlitzBtn');
+
+            if (mode === 'boss') {
+                clearInterval(blitzTimerId);
+                bossBtn.classList.add('active');
+                blitzBtn.classList.remove('active');
+                document.getElementById('timerLabel').textContent = 'Level';
+                document.getElementById('gameLevel').textContent = state.level;
+            } else {
+                blitzBtn.classList.add('active');
+                bossBtn.classList.remove('active');
+                startBlitzTimer();
+            }
+        }
+
+        function updateUIStats() {
+            document.getElementById('gameScore').textContent = state.score;
+            document.getElementById('coinsCount').textContent = state.coins;
+            document.getElementById('gameStreak').textContent = state.streak + 'x';
+            document.getElementById('streakCount').textContent = state.streak;
+
+            if (state.gameMode === 'boss') {
+                document.getElementById('gameLevel').textContent = state.level;
+            }
+        }
+
+        function initMatchingGame() {
+            const leftCol = document.getElementById('matchLeftCol');
+            const rightCol = document.getElementById('matchRightCol');
+            leftCol.innerHTML = '';
+            rightCol.innerHTML = '';
+            selectedMatchRegion = null;
+            selectedMatchDesc = null;
+
+            // Shuffle regions and descriptions independently
+            const regions = MATCHING_PAIRS.map(p => p.region).sort(() => Math.random() - 0.5);
+            const descs = MATCHING_PAIRS.map(p => p.desc).sort(() => Math.random() - 0.5);
+
+            regions.forEach(r => {
+                const card = document.createElement('div');
+                card.className = 'match-card';
+                card.dataset.region = r;
+                card.innerHTML = `<span style="font-weight: 800; font-size: 0.95rem; color: var(--md-sys-color-primary);">${r}</span>`;
+                card.addEventListener('click', () => handleMatchSelect('region', r, card));
+                leftCol.appendChild(card);
+            });
+
+            descs.forEach(d => {
+                const card = document.createElement('div');
+                card.className = 'match-card';
+                card.dataset.desc = d;
+                card.innerHTML = `<span style="font-size: 0.82rem; font-weight: 600;">${d}</span>`;
+                card.addEventListener('click', () => handleMatchSelect('desc', d, card));
+                rightCol.appendChild(card);
+            });
+        }
+
+        function handleMatchSelect(type, value, element) {
+            sounds.play('click');
+
+            if (type === 'region') {
+                document.querySelectorAll('#matchLeftCol .match-card').forEach(c => c.classList.remove('selected'));
+                element.classList.add('selected');
+                selectedMatchRegion = { val: value, el: element };
+            } else {
+                document.querySelectorAll('#matchRightCol .match-card').forEach(c => c.classList.remove('selected'));
+                element.classList.add('selected');
+                selectedMatchDesc = { val: value, el: element };
+            }
+
+            if (selectedMatchRegion && selectedMatchDesc) {
+                // Check if valid pair
+                const pair = MATCHING_PAIRS.find(p => p.region === selectedMatchRegion.val && p.desc === selectedMatchDesc.val);
+                if (pair) {
+                    sounds.play('correct');
+                    selectedMatchRegion.el.classList.remove('selected');
+                    selectedMatchDesc.el.classList.remove('selected');
+                    selectedMatchRegion.el.classList.add('matched');
+                    selectedMatchDesc.el.classList.add('matched');
+
+                    state.score += 200;
+                    state.coins += 20;
+                    updateUIStats();
+
+                    selectedMatchRegion = null;
+                    selectedMatchDesc = null;
+
+                    // Check all matched
+                    const matchedCount = document.querySelectorAll('.match-card.matched').length;
+                    if (matchedCount === MATCHING_PAIRS.length * 2) {
+                        setTimeout(() => {
+                            sounds.play('win');
+                            showModal("🎉 Perfect Match!", "You correctly paired all EM Wave regions with their primary uses & dangers! +200 XP & +20 💎");
+                        }, 300);
+                    }
+                } else {
+                    sounds.play('wrong');
+                    const rEl = selectedMatchRegion.el;
+                    const dEl = selectedMatchDesc.el;
+                    rEl.style.borderColor = 'var(--md-sys-color-error)';
+                    dEl.style.borderColor = 'var(--md-sys-color-error)';
+
+                    setTimeout(() => {
+                        rEl.style.borderColor = '';
+                        dEl.style.borderColor = '';
+                        rEl.classList.remove('selected');
+                        dEl.classList.remove('selected');
+                        selectedMatchRegion = null;
+                        selectedMatchDesc = null;
+                    }, 600);
+                }
+            }
+        }
+
+        function initPenetrationCanvas() {
+            const canvas = document.getElementById('penetrationCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const slider = document.getElementById('waveSelectSlider');
+
+            let animTime = 0;
+            let animationFrameId;
+
+            function render() {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = canvas.parentElement.clientHeight;
+                const w = canvas.width;
+                const h = canvas.height;
+
+                const selIndex = parseInt(slider.value);
+                const data = TISSUE_DATA[selIndex];
+                document.getElementById('selectedWaveName').textContent = data.name;
+
+                ctx.clearRect(0, 0, w, h);
+
+                // Draw Tissue Layers (Epidermis, Dermis, Bone)
+                const layer1 = h * 0.35; // Skin Surface
+                const layer2 = h * 0.70; // Soft Tissue / Muscle
+                
+                // Air
+                ctx.fillStyle = '#E0F2FE';
+                ctx.fillRect(0, 0, w, layer1);
+                ctx.fillStyle = '#0369A1';
+                ctx.font = 'bold 11px sans-serif';
+                ctx.fillText('AIR MEDIUM', 15, 20);
+
+                // Epidermis/Skin
+                ctx.fillStyle = '#FDE68A';
+                ctx.fillRect(0, layer1, w, layer2 - layer1);
+                ctx.fillStyle = '#B45309';
+                ctx.fillText('SKIN & TISSUE (Epidermis/Dermis)', 15, layer1 + 20);
+
+                // Bone / Deep Organ
+                ctx.fillStyle = '#E2E8F0';
+                ctx.fillRect(0, layer2, w, h - layer2);
+                ctx.fillStyle = '#334155';
+                ctx.fillText('DEEP BONE / INTERNAL ORGANS', 15, layer2 + 25);
+
+                // Draw Wave Beam Shooting Downward
+                animTime += 0.05;
+                const beamX = w * 0.6;
+                const maxDepthY = (data.depth / 100) * h;
+
+                ctx.strokeStyle = data.ionise ? '#EF4444' : '#3B82F6';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                
+                for (let y = 0; y <= maxDepthY; y += 2) {
+                    const freqFactor = (selIndex + 1) * 0.15;
+                    const offsetX = Math.sin(y * freqFactor - animTime) * 12;
+                    if (y === 0) ctx.moveTo(beamX + offsetX, y);
+                    else ctx.lineTo(beamX + offsetX, y);
+                }
+                ctx.stroke();
+
+                // Draw Ionisation Particle Sparks if ionising
+                if (data.ionise && maxDepthY > layer1) {
+                    ctx.fillStyle = '#DC2626';
+                    for (let i = 0; i < 5; i++) {
+                        const px = beamX + (Math.random() - 0.5) * 30;
+                        const py = layer1 + Math.random() * (maxDepthY - layer1);
+                        ctx.beginPath();
+                        ctx.arc(px, py, 4, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                    ctx.fillStyle = '#991B1B';
+                    ctx.font = 'bold 11px sans-serif';
+                    ctx.fillText('⚡ ELECTRON EJECTED! (IONISATION)', beamX - 90, maxDepthY + 15);
+                }
+
+                // Update text card info
+                document.getElementById('penTitle').textContent = data.name;
+                document.getElementById('penNature').innerHTML = `<strong>Nature:</strong> ${data.nature}`;
+                document.getElementById('penEffect').innerHTML = `<strong>Tissue Interaction:</strong> ${data.effect}`;
+                document.getElementById('penStatus').innerHTML = `<strong>Safety Rating:</strong> ${data.status}`;
+                document.getElementById('penStatus').style.color = data.statusColor;
+
+                animationFrameId = requestAnimationFrame(render);
+            }
+
+            slider.addEventListener('input', () => {
+                sounds.play('click');
+            });
+
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+            requestAnimationFrame(render);
+        }
+
+        function initPieCanvas() {
+            const canvas = document.getElementById('radiationPieCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+            const w = canvas.width;
+            const h = canvas.height;
+
+            const slices = [
+                { label: "Radon Gas (Ground)", pct: 43, color: "#3B82F6" },
+                { label: "Medical Scans (CT/X-Ray)", pct: 20, color: "#F59E0B" },
+                { label: "Earth Gamma Rays", pct: 15, color: "#10B981" },
+                { label: "Cosmic Rays", pct: 13, color: "#8B5CF6" },
+                { label: "Food & Water", pct: 8, color: "#EC4899" },
+                { label: "Man-made (Nuclear/Other)", pct: 1, color: "#EF4444" }
+            ];
+
+            let startAngle = 0;
+            const centerX = w * 0.35;
+            const centerY = h * 0.5;
+            const radius = Math.min(w, h) * 0.38;
+
+            ctx.clearRect(0, 0, w, h);
+
+            slices.forEach(slice => {
+                const sliceAngle = (slice.pct / 100) * 2 * Math.PI;
+                ctx.fillStyle = slice.color;
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
+                ctx.closePath();
+                ctx.fill();
+                startAngle += sliceAngle;
+            });
+
+            // Draw Legend
+            let legendY = 25;
+            const legendX = w * 0.65;
+            ctx.font = '11px sans-serif';
+
+            slices.forEach(slice => {
+                ctx.fillStyle = slice.color;
+                ctx.fillRect(legendX, legendY, 12, 12);
+                ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--md-sys-color-on-surface');
+                ctx.fillText(`${slice.label} (${slice.pct}%)`, legendX + 18, legendY + 10);
+                legendY += 24;
+            });
+        }
+
+        function renderKeywords(filter = '') {
+            const container = document.getElementById('keywordListContainer');
+            container.innerHTML = '';
+
+            const filtered = KEYWORDS_BANK.filter(item => 
+                item.term.toLowerCase().includes(filter.toLowerCase()) ||
+                item.desc.toLowerCase().includes(filter.toLowerCase()) ||
+                item.category.toLowerCase().includes(filter.toLowerCase())
+            );
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div style="text-align: center; padding: 20px; color: var(--md-sys-color-outline);">No terms found matching "${filter}".</div>`;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'keyword-item';
+                div.innerHTML = `
+                    <div class="keyword-title">
+                        <span>${item.term}</span>
+                        <span class="keyword-category">${item.category}</span>
+                    </div>
+                    <div class="keyword-desc">${item.desc}</div>
+                    ${item.formula ? `<div class="keyword-formula">${item.formula}</div>` : ''}
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function showModal(title, text) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalBody').textContent = text;
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // Fresh start every time simulation launches
+            state.score = 0;
+            state.coins = 0;
+            state.level = 1;
+            state.streak = 1;
+            state.totalAnswered = 0;
+            state.correctAnswered = 0;
+            state.currentQIndex = 0;
+            state.bossIndex = 0;
+            state.userHp = 100;
+
+            const currentBoss = BOSS_ROSTER[0];
+            state.bossMaxHp = currentBoss.maxHp;
+            state.bossHp = currentBoss.maxHp;
+
+            // Navigation Tabs
+            const navItems = document.querySelectorAll('.nav-item');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const targetTab = item.getAttribute('data-tab');
+                    sounds.play('click');
+
+                    navItems.forEach(n => n.classList.remove('active'));
+                    tabContents.forEach(t => t.classList.remove('active'));
+
+                    item.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+
+                    if (targetTab === 'tab-lab') {
+                        setTimeout(() => {
+                            initPenetrationCanvas();
+                            initPieCanvas();
+                        }, 50);
+                    } else if (targetTab === 'tab-sort') {
+                        initMatchingGame();
+                    }
+                });
+            });
+
+            // Theme Switcher
+            const themeBtn = document.getElementById('themeToggleBtn');
+            const themeIcon = document.getElementById('themeIcon');
+            
+            function applyTheme(theme) {
+                document.body.setAttribute('data-theme', theme);
+                themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+                state.theme = theme;
+            }
+
+            themeBtn.addEventListener('click', () => {
+                const nextTheme = state.theme === 'day' || state.theme === 'light' ? 'dark' : 'day';
+                sounds.play('click');
+                applyTheme(nextTheme);
+            });
+
+            applyTheme('day');
+
+            // Sound Switcher
+            const soundBtn = document.getElementById('soundToggleBtn');
+            const soundIcon = document.getElementById('soundIcon');
+            soundBtn.addEventListener('click', () => {
+                sounds.muted = !sounds.muted;
+                state.soundEnabled = !sounds.muted;
+                soundIcon.textContent = sounds.muted ? '🔇' : '🔊';
+            });
+
+            // Mode Selector
+            document.getElementById('modeBossBtn').addEventListener('click', () => switchGameMode('boss'));
+            document.getElementById('modeBlitzBtn').addEventListener('click', () => switchGameMode('blitz'));
+
+            // Glossary Search
+            document.getElementById('keywordSearch').addEventListener('input', (e) => {
+                renderKeywords(e.target.value);
+            });
+
+            // Quiz Hint
+            document.getElementById('hintBtn').addEventListener('click', () => {
+                const current = PHYSICS_QUESTIONS[state.currentQIndex];
+                sounds.play('click');
+                showModal("💡 Beam Bot Hint", current.hint);
+            });
+
+            // Matching Reset
+            document.getElementById('resetMatchBtn').addEventListener('click', () => {
+                sounds.play('click');
+                initMatchingGame();
+            });
+
+            // Modal Close
+            document.getElementById('modalCloseBtn').addEventListener('click', () => {
+                document.getElementById('modalOverlay').classList.remove('active');
+            });
+
+            // Mascot Tip Trigger
+            document.getElementById('mascotAvatarHeader').addEventListener('click', () => {
+                sounds.play('click');
+                showModal("🤖 Beam Bot Tip!", "Remember: High-frequency waves (UV, X-Rays, Gamma) are Ionising! They knock electrons out of atoms, creating harmful ions in cells.");
+            });
+
+            // Initial view setup
+            renderBossVisual();
+            triggerBossEntranceAnimation();
+            renderKeywords();
+            updateUIStats();
+            loadQuestion();
+        });
+    </script>
+</body>
+</html>

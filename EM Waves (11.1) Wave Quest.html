@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sec 3 Physics Ch 11.1: EM Waves Quest - Cute Boss Battle Edition</title>
+    <style>
+        :root {
+            --md-sys-color-primary: #6750A4;
+            --md-sys-color-on-primary: #FFFFFF;
+            --md-sys-color-primary-container: #EADDFF;
+            --md-sys-color-on-primary-container: #21005D;
+            --md-sys-color-secondary: #625B71;
+            --md-sys-color-on-secondary: #FFFFFF;
+            --md-sys-color-secondary-container: #E8DEF8;
+            --md-sys-color-on-secondary-container: #1D192B;
+            --md-sys-color-tertiary: #7D5260;
+            --md-sys-color-tertiary-container: #FFD8E4;
+            --md-sys-color-on-tertiary-container: #31111D;
+            --md-sys-color-background: #FEF7FF;
+            --md-sys-color-on-background: #1D1B20;
+            --md-sys-color-surface: #F7F2FA;
+            --md-sys-color-surface-variant: #E7E0EC;
+            --md-sys-color-on-surface: #1D1B20;
+            --md-sys-color-on-surface-variant: #49454F;
+            --md-sys-color-outline: #79747E;
+            --md-sys-color-outline-variant: #CAC4D0;
+            --md-sys-color-success: #198754;
+            --md-sys-color-success-container: #D1E7DD;
+            --md-sys-color-on-success-container: #0F5132;
+            --md-sys-color-error: #B3261E;
+            --md-sys-color-error-container: #F9DEDC;
+            --md-sys-color-on-error-container: #410E0B;
+            --md-sys-color-gold: #D97706;
+            --md-sys-color-gold-container: #FEF3C7;
+            --md-sys-color-card-bg: #FFFFFF;
+            --md-sys-color-shadow: rgba(0, 0, 0, 0.08);
+
+            --md-shape-corner-extra-large: 28px;
+            --md-shape-corner-large: 16px;
+            --md-shape-corner-medium: 12px;
+            --md-shape-corner-full: 9999px;
+
+            --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --transition-speed: 0.25s;
+        }
+
+        [data-theme="dark"] {
+            --md-sys-color-primary: #D0BCFF;
+            --md-sys-color-on-primary: #381E72;
+            --md-sys-color-primary-container: #4F378B;
+            --md-sys-color-on-primary-container: #EADDFF;
+            --md-sys-color-secondary: #CCC2DC;
+            --md-sys-color-on-secondary: #332D41;
+            --md-sys-color-secondary-container: #4A4458;
+            --md-sys-color-on-secondary-container: #E8DEF8;
+            --md-sys-color-tertiary: #EFB8C8;
+            --md-sys-color-tertiary-container: #633B48;
+            --md-sys-color-on-tertiary-container: #FFD8E4;
+            --md-sys-color-background: #141218;
+            --md-sys-color-on-background: #E6E0E9;
+            --md-sys-color-surface: #211F26;
+            --md-sys-color-surface-variant: #49454F;
+            --md-sys-color-on-surface: #E6E0E9;
+            --md-sys-color-on-surface-variant: #CAC4D0;
+            --md-sys-color-outline: #938F99;
+            --md-sys-color-outline-variant: #49454F;
+            --md-sys-color-success: #75B798;
+            --md-sys-color-success-container: #0F5132;
+            --md-sys-color-on-success-container: #D1E7DD;
+            --md-sys-color-error: #F2B8B5;
+            --md-sys-color-error-container: #601410;
+            --md-sys-color-on-error-container: #F9DEDC;
+            --md-sys-color-gold: #F59E0B;
+            --md-sys-color-gold-container: #78350F;
+            --md-sys-color-card-bg: #1D1B20;
+            --md-sys-color-shadow: rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body {
+            background-color: var(--md-sys-color-background);
+            color: var(--md-sys-color-on-background);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            max-height: 100vh;
+            overflow: hidden;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        .app-bar {
+            height: 64px;
+            background-color: var(--md-sys-color-surface);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-shadow: 0 1px 3px var(--md-sys-color-shadow);
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mascot-avatar {
+            width: 44px;
+            height: 44px;
+            background-color: var(--md-sys-color-primary-container);
+            border-radius: var(--md-shape-corner-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 2px 5px var(--md-sys-color-shadow);
+            position: relative;
+        }
+
+        .mascot-avatar:hover {
+            transform: scale(1.1) rotate(6deg);
+        }
+
+        .app-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .app-subtitle {
+            font-size: 0.75rem;
+            color: var(--md-sys-color-on-surface-variant);
+            font-weight: 600;
+        }
+
+        .top-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .currency-badge, .streak-badge {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: var(--md-shape-corner-full);
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        .currency-badge {
+            background: var(--md-sys-color-gold-container);
+            color: var(--md-sys-color-gold);
+        }
+
+        .streak-badge {
+            background: var(--md-sys-color-tertiary-container);
+            color: var(--md-sys-color-on-tertiary-container);
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: var(--md-shape-corner-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--md-sys-color-on-surface-variant);
+            font-size: 1.1rem;
+            transition: background-color 0.2s;
+        }
+
+        .icon-btn:hover, .icon-btn:focus {
+            background-color: var(--md-sys-color-surface-variant);
+            outline: none;
+        }
+
+        .app-body {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .tab-content {
+            flex: 1;
+            display: none;
+            flex-direction: column;
+            padding: 16px 20px;
+            overflow-y: auto;
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .tab-content.active {
+            display: flex;
+        }
+
+        .card {
+            background-color: var(--md-sys-color-card-bg);
+            border-radius: var(--md-shape-corner-extra-large);
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--md-sys-color-outline-variant);
+            box-shadow: 0 4px 12px var(--md-sys-color-shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .quest-battle-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 18px;
+            align-items: start;
+            width: 100%;
+        }
+
+        @media (max-width: 900px) {
+            .quest-battle-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 960px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mode-selector {
+            display: flex;
+            gap: 8px;
+            background-color: var(--md-sys-color-surface-variant);
+            padding: 4px;
+            border-radius: var(--md-shape-corner-full);
+            margin-bottom: 14px;
+            align-self: center;
+        }
+
+        .mode-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 18px;
+            border-radius: var(--md-shape-corner-full);
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--md-sys-color-on-surface-variant);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .mode-btn.active {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            box-shadow: 0 2px 6px var(--md-sys-color-shadow);
+        }
+
+        .mascot-speech-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            padding: 12px 18px;
+            border-radius: var(--md-shape-corner-large);
+            margin-bottom: 14px;
+        }
+
+        .mascot-face {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+        }
+
+        .speech-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .game-header-bar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+            padding: 10px 16px;
+            border-radius: var(--md-shape-corner-large);
+            margin-bottom: 14px;
+        }
+
+        .stat-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-val {
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .stat-lbl {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.85;
+            font-weight: 700;
+        }
+
+        .boss-panel-card {
+            background: linear-gradient(145deg, var(--md-sys-color-surface), var(--md-sys-color-surface-variant));
+            border-radius: var(--md-shape-corner-extra-large);
+            padding: 18px;
+            border: 2px solid var(--md-sys-color-tertiary);
+            box-shadow: 0 6px 16px var(--md-sys-color-shadow);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .boss-avatar-wrapper {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            background: radial-gradient(circle, rgba(236,72,153,0.15) 0%, rgba(0,0,0,0) 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--md-shape-corner-large);
+            overflow: hidden;
+        }
+
+        .boss-svg-entity {
+            width: 135px;
+            height: 135px;
+            filter: drop-shadow(0 8px 14px rgba(0,0,0,0.25));
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .boss-entrance-anim {
+            animation: bossEntrance 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .boss-hit-anim {
+            animation: bossShakeHit 0.45s ease-in-out;
+        }
+
+        .user-hit-anim {
+            animation: userShakeHit 0.45s ease-in-out;
+        }
+
+        @keyframes bossEntrance {
+            0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+            60% { transform: scale(1.2) rotate(10deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        @keyframes bossShakeHit {
+            0% { transform: translate(0, 0) scale(1); filter: brightness(1); }
+            20% { transform: translate(-14px, 4px) scale(0.92); filter: brightness(1.8) drop-shadow(0 0 15px #FF69B4); }
+            40% { transform: translate(14px, -4px) scale(1.08); filter: brightness(1.8) drop-shadow(0 0 20px #FF69B4); }
+            60% { transform: translate(-8px, 2px) scale(0.96); }
+            80% { transform: translate(8px, -2px) scale(1.02); }
+            100% { transform: translate(0, 0) scale(1); filter: brightness(1); }
+        }
+
+        @keyframes userShakeHit {
+            0% { transform: translate(0, 0); }
+            20% { transform: translate(-8px, 6px); }
+            40% { transform: translate(8px, -6px); }
+            60% { transform: translate(-6px, 3px); }
+            80% { transform: translate(6px, -3px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .floating-dmg-text {
+            position: absolute;
+            font-size: 1.5rem;
+            font-weight: 900;
+            pointer-events: none;
+            animation: floatUpFade 1.2s forwards ease-out;
+            z-index: 20;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+        }
+
+        @keyframes floatUpFade {
+            0% { opacity: 1; transform: translateY(0) scale(0.8); }
+            30% { transform: translateY(-20px) scale(1.3); }
+            100% { opacity: 0; transform: translateY(-50px) scale(1); }
+        }
+
+        .boss-hp-bar-container, .user-hp-bar-container {
+            width: 100%;
+        }
+
+        .hp-label-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .hp-bar-outer {
+            width: 100%;
+            height: 16px;
+            background-color: var(--md-sys-color-outline-variant);
+            border-radius: var(--md-shape-corner-full);
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .boss-hp-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #F43F5E, #FB7185);
+            width: 100%;
+            transition: width 0.4s ease-out;
+        }
+
+        .user-hp-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #319795, #38A169);
+            width: 100%;
+            transition: width 0.4s ease-out;
+        }
+
+        .combat-log-box {
+            background: var(--md-sys-color-surface);
+            border: 1px solid var(--md-sys-color-outline-variant);
+            border-radius: var(--md-shape-corner-medium);
+            padding: 8px 12px;
+            font-size: 0.8rem;
+            min-height: 52px;
+            max-height: 70px;
+            overflow-y: auto;
+            color: var(--md-sys-color-on-surface-variant);
+            line-height: 1.35;
+        }
+
+        .question-card {
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 18px;
+            background-color: var(--md-sys-color-surface);
+            border-radius: var(--md-shape-corner-large);
+            margin-bottom: 16px;
+            border: 2px dashed var(--md-sys-color-outline-variant);
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.45;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        @media (max-width: 640px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .btn-option {
+            background-color: var(--md-sys-color-surface-variant);
+            color: var(--md-sys-color-on-surface-variant);
+            border: 2px solid transparent;
+            padding: 12px 16px;
+            border-radius: var(--md-shape-corner-large);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-option:hover {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            border-color: var(--md-sys-color-primary);
+        }
+
+        .btn-option:focus {
+            outline: 2px solid var(--md-sys-color-primary);
+        }
+
+        .btn-option.correct {
+            background-color: var(--md-sys-color-success-container) !important;
+            color: var(--md-sys-color-on-success-container) !important;
+            border-color: var(--md-sys-color-success) !important;
+        }
+
+        .btn-option.incorrect {
+            background-color: var(--md-sys-color-error-container) !important;
+            color: var(--md-sys-color-on-error-container) !important;
+            border-color: var(--md-sys-color-error) !important;
+        }
+
+        .btn-action {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--md-shape-corner-full);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+            box-shadow: 0 2px 6px var(--md-sys-color-shadow);
+        }
+
+        .btn-action:hover {
+            opacity: 0.92;
+            transform: translateY(-1px);
+        }
+
+        .btn-action:focus {
+            outline: 3px solid var(--md-sys-color-primary-container);
+        }
+
+        .btn-secondary {
+            background-color: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+        }
+
+        .canvas-container {
+            width: 100%;
+            height: 210px;
+            position: relative;
+            background-color: var(--md-sys-color-surface);
+            border-radius: var(--md-shape-corner-large);
+            border: 1px solid var(--md-sys-color-outline-variant);
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .slider-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .slider-control label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            min-width: 130px;
+        }
+
+        .slider-control input[type="range"] {
+            flex: 1;
+            accent-color: var(--md-sys-color-primary);
+            cursor: pointer;
+        }
+
+        .sorting-area {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sort-slots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            min-height: 56px;
+            padding: 10px;
+            background: var(--md-sys-color-surface);
+            border: 2px dashed var(--md-sys-color-outline);
+            border-radius: var(--md-shape-corner-large);
+            align-items: center;
+        }
+
+        .sort-item {
+            background: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            padding: 8px 14px;
+            border-radius: var(--md-shape-corner-full);
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.15s, background-color 0.2s;
+        }
+
+        .sort-item:hover {
+            transform: scale(1.05);
+        }
+
+        .search-bar-container {
+            margin-bottom: 14px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 16px;
+            padding-left: 40px;
+            border-radius: var(--md-shape-corner-full);
+            border: 1px solid var(--md-sys-color-outline);
+            background-color: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--md-sys-color-primary);
+            box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            fill: var(--md-sys-color-on-surface-variant);
+            width: 18px;
+            height: 18px;
+        }
+
+        .keyword-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 440px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .keyword-item {
+            background-color: var(--md-sys-color-surface);
+            border-radius: var(--md-shape-corner-medium);
+            padding: 12px 16px;
+            border-left: 4px solid var(--md-sys-color-primary);
+            box-shadow: 0 2px 4px var(--md-sys-color-shadow);
+        }
+
+        .keyword-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--md-sys-color-primary);
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .keyword-category {
+            font-size: 0.72rem;
+            background: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            padding: 2px 8px;
+            border-radius: var(--md-shape-corner-full);
+            font-weight: 700;
+        }
+
+        .keyword-desc {
+            font-size: 0.88rem;
+            color: var(--md-sys-color-on-surface-variant);
+            line-height: 1.4;
+        }
+
+        .keyword-formula {
+            margin-top: 6px;
+            font-family: monospace;
+            background-color: var(--md-sys-color-surface-variant);
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            font-weight: 700;
+            color: var(--md-sys-color-on-surface-variant);
+            font-size: 0.85rem;
+        }
+
+        .bottom-nav {
+            height: 64px;
+            background-color: var(--md-sys-color-surface);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -2px 8px var(--md-sys-color-shadow);
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            background: transparent;
+            border: none;
+            color: var(--md-sys-color-on-surface-variant);
+            cursor: pointer;
+            padding: 4px 12px;
+            border-radius: var(--md-shape-corner-full);
+            transition: all 0.2s;
+            text-decoration: none;
+            flex: 1;
+            max-width: 24%;
+        }
+
+        .nav-item.active {
+            color: var(--md-sys-color-on-primary-container);
+        }
+
+        .nav-icon-wrapper {
+            width: 44px;
+            height: 26px;
+            border-radius: var(--md-shape-corner-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+
+        .nav-item.active .nav-icon-wrapper {
+            background-color: var(--md-sys-color-primary-container);
+        }
+
+        .nav-item svg {
+            fill: currentColor;
+            width: 20px;
+            height: 20px;
+        }
+
+        .nav-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-dialog {
+            background-color: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+            padding: 24px;
+            border-radius: var(--md-shape-corner-extra-large);
+            max-width: 440px;
+            width: 90%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            text-align: center;
+            animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--md-sys-color-outline-variant);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body data-theme="day">
+
+    <header class="app-bar">
+        <div class="brand-container">
+            <div class="mascot-avatar" id="mascotAvatarHeader" title="Beam Bot: Tap to hear tips!">
+                <svg width="28" height="28" viewBox="0 0 100 100" id="headerMascotSvg">
+                    <circle cx="50" cy="50" r="42" fill="var(--md-sys-color-primary)"/>
+                    <circle cx="36" cy="42" r="7" fill="#FFF"/>
+                    <circle cx="64" cy="42" r="7" fill="#FFF"/>
+                    <circle cx="36" cy="42" r="3" fill="#000"/>
+                    <circle cx="64" cy="42" r="3" fill="#000"/>
+                    <path d="M 35 64 Q 50 78 65 64" stroke="#FFF" stroke-width="5" fill="none" stroke-linecap="round"/>
+                    <line x1="50" y1="8" x2="50" y2="2" stroke="var(--md-sys-color-primary)" stroke-width="4"/>
+                    <circle cx="50" cy="2" r="5" fill="var(--md-sys-color-tertiary)"/>
+                </svg>
+            </div>
+            <div>
+                <h1 class="app-title">EM Waves Study Quest <span style="font-size: 0.75em; font-weight: 600; opacity: 0.85; margin-left: 4px;">by Papa Lim</span></h1>
+                <p class="app-subtitle">Chp 11.1 (Sci Phy) / 13.1 (Phy) What are Electromagnetic waves</p>
+            </div>
+        </div>
+
+        <div class="top-controls">
+            <div class="currency-badge" title="Quantum Coins">
+                <span>💎</span>
+                <span id="coinsCount">0</span>
+            </div>
+
+            <div class="streak-badge" title="Daily Streak">
+                <span>⚡</span>
+                <span id="streakCount">1</span>
+            </div>
+
+            <button class="icon-btn" id="themeToggleBtn" aria-label="Toggle Night and Day Theme">
+                <span id="themeIcon">☀️</span>
+            </button>
+
+            <button class="icon-btn" id="soundToggleBtn" aria-label="Toggle Audio Effects">
+                <span id="soundIcon">🔊</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <section class="tab-content active" id="tab-game">
+            <div class="mode-selector">
+                <button class="mode-btn active" id="modeBossBtn">⚔️ Boss Rush</button>
+                <button class="mode-btn" id="modeBlitzBtn">⏱️ Speed Blitz (60s)</button>
+            </div>
+
+            <div class="game-header-bar">
+                <div class="stat-box">
+                    <span class="stat-lbl">Score (XP)</span>
+                    <span class="stat-val" id="gameScore">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-lbl" id="timerLabel">Level</span>
+                    <span class="stat-val" id="gameLevel">1</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-lbl">Combo</span>
+                    <span class="stat-val" id="gameStreak">1x</span>
+                </div>
+            </div>
+
+            <!-- Main Split Layout: Question Left, Boss Right -->
+            <div class="quest-battle-grid">
+                
+                <!-- LEFT COLUMN: Question Panel & Mascot Speech -->
+                <div class="quest-left-panel" id="questionPanel">
+                    <div class="mascot-speech-box">
+                        <svg class="mascot-face" id="mascotDynamicFace" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" fill="var(--md-sys-color-primary)"/>
+                            <circle cx="35" cy="40" r="8" fill="#FFF"/>
+                            <circle cx="65" cy="40" r="8" fill="#FFF"/>
+                            <circle cx="37" cy="40" r="3" fill="#000"/>
+                            <circle cx="67" cy="40" r="3" fill="#000"/>
+                            <path id="mascotMouth" d="M 32 65 Q 50 80 68 65" stroke="#FFF" stroke-width="6" fill="none" stroke-linecap="round"/>
+                        </svg>
+                        <div class="speech-text" id="mascotMessage">
+                            Welcome Sec 3 Scholar! Defeat cute spectrum monsters by answering O-Level Physics questions!
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">
+                                <span>🎯</span> Question <span id="qCurrentNum">1</span> / <span id="qTotalNum">10</span>
+                            </span>
+                            <button class="btn-action btn-secondary" id="hintBtn" style="padding: 4px 12px; font-size: 0.8rem;">💡 Hint</button>
+                        </div>
+
+                        <div class="question-card">
+                            <div class="question-text" id="questionText">Loading question...</div>
+                        </div>
+
+                        <div class="options-grid" id="optionsContainer">
+                            <!-- Dynamic option buttons -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: Cute Monster Boss Panel & Health Bars -->
+                <div class="quest-right-panel" id="bossContainer">
+                    <div class="boss-panel-card" id="bossCardElement">
+                        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                            <span style="font-weight: 800; font-size: 1rem; color: var(--md-sys-color-tertiary);" id="bossName">👾 Boss: Radio Bobble</span>
+                            <span style="font-size: 0.78rem; font-weight: 800; background: var(--md-sys-color-tertiary-container); color: var(--md-sys-color-on-tertiary-container); padding: 2px 8px; border-radius: 99px;" id="bossStageBadge">STAGE 1/5</span>
+                        </div>
+
+                        <div class="boss-avatar-wrapper" id="bossAvatarWrapper">
+                            <!-- Floating Damage Number Overlay -->
+                            <div id="dmgOverlay"></div>
+
+                            <!-- Cute Monster Boss SVG -->
+                            <svg class="boss-svg-entity boss-entrance-anim" id="bossSvgGraphic" viewBox="0 0 100 100">
+                                <!-- Dynamic Cute SVG filled via JS -->
+                            </svg>
+                        </div>
+
+                        <!-- Boss Health Bar -->
+                        <div class="boss-hp-bar-container">
+                            <div class="hp-label-row">
+                                <span style="color: var(--md-sys-color-error);">👾 MONSTER HP</span>
+                                <span id="bossHpText" style="color: var(--md-sys-color-error);">100 / 100</span>
+                            </div>
+                            <div class="hp-bar-outer">
+                                <div class="boss-hp-fill" id="bossHpFill"></div>
+                            </div>
+                        </div>
+
+                        <!-- User Shield / HP Bar -->
+                        <div class="user-hp-bar-container">
+                            <div class="hp-label-row">
+                                <span style="color: var(--md-sys-color-success);">🛡️ PLAYER SHIELD</span>
+                                <span id="userHpText" style="color: var(--md-sys-color-success);">100 / 100</span>
+                            </div>
+                            <div class="hp-bar-outer">
+                                <div class="user-hp-fill" id="userHpFill"></div>
+                            </div>
+                        </div>
+
+                        <!-- Battle Activity Log -->
+                        <div class="combat-log-box" id="combatLog">
+                            ⚔️ Battle Started! Answer questions correctly to attack the spectrum monster!
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="tab-content" id="tab-sort">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">🧩 EM Spectrum Builder Puzzle</span>
+                    <button class="btn-action btn-secondary" id="resetSortBtn" style="padding: 4px 12px; font-size: 0.8rem;">↺ Reset</button>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--md-sys-color-on-surface-variant); margin-bottom: 12px;">
+                    Tap the EM waves in order of <strong>INCREASING FREQUENCY</strong> (from lowest to highest frequency / longest to shortest wavelength).
+                </p>
+
+                <div style="margin-bottom: 12px; font-weight: 700; font-size: 0.85rem; color: var(--md-sys-color-primary);">
+                    💡 Memory Mnemonic: "Raging Martians Invade Venus Using X-ray Guns"
+                </div>
+
+                <div class="sorting-area">
+                    <div style="font-weight: 600; font-size: 0.85rem;">Available Waves (Tap to Add):</div>
+                    <div class="sort-slots" id="poolSlots"></div>
+
+                    <div style="font-weight: 600; font-size: 0.85rem; margin-top: 8px;">Your Ordered Spectrum (Lowest f ➔ Highest f):</div>
+                    <div class="sort-slots" id="targetSlots" style="border-color: var(--md-sys-color-primary); background-color: var(--md-sys-color-primary-container);"></div>
+                </div>
+
+                <div style="margin-top: 16px; text-align: center;">
+                    <button class="btn-action" id="checkSortBtn">Check My Order! 🚀</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="tab-content" id="tab-lab">
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">🌊 Oscillating EM Field Visualizer</span>
+                    </div>
+                    <p style="font-size: 0.82rem; color: var(--md-sys-color-on-surface-variant); margin-bottom: 8px;">
+                        EM waves consist of electric (E) & magnetic (B) fields vibrating at right angles to wave travel direction.
+                    </p>
+                    <div class="canvas-container">
+                        <canvas id="emWaveCanvas"></canvas>
+                    </div>
+                    <div class="slider-control">
+                        <label for="freqSlider">Frequency (f):</label>
+                        <input type="range" id="freqSlider" min="1" max="5" step="0.5" value="2">
+                        <span id="freqDisplay" style="font-weight: 700; width: 40px;">2x</span>
+                    </div>
+                    <div class="slider-control">
+                        <label for="ampSlider">Amplitude:</label>
+                        <input type="range" id="ampSlider" min="10" max="50" value="30">
+                        <span id="ampDisplay" style="font-weight: 700; width: 40px;">30</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">🔍 Wave Equation Calculator (c = f × λ)</span>
+                    </div>
+                    <div class="canvas-container" style="height: 120px;">
+                        <canvas id="spectrumCanvas"></canvas>
+                    </div>
+                    <div class="slider-control">
+                        <label for="spectrumSlider">Spectrum Region:</label>
+                        <input type="range" id="spectrumSlider" min="0" max="6" step="1" value="3">
+                    </div>
+                    
+                    <div id="spectrumInfoCard" style="margin-top: 10px; background: var(--md-sys-color-surface); padding: 12px; border-radius: 12px; border: 1px solid var(--md-sys-color-outline-variant);">
+                        <h4 style="color: var(--md-sys-color-primary); margin-bottom: 4px;" id="specName">Visible Light</h4>
+                        <p style="font-size: 0.82rem; margin-bottom: 4px;" id="specScale"><strong>Wavelength:</strong> 400 nm - 700 nm | <strong>Frequency:</strong> 4×10¹⁴ - 7.5×10¹⁴ Hz</p>
+                        <p style="font-size: 0.82rem; margin-bottom: 4px;" id="specApp"><strong>Applications:</strong> Optical fibers in telecommunications, photography, human vision.</p>
+                        <p style="font-size: 0.82rem; color: var(--md-sys-color-error);" id="specDanger"><strong>Dangers:</strong> Blindness or retinal damage from high intensity laser beams.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tab-content" id="tab-keywords">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">📚 Sec 3 Ch 11.1 Master Keyword Glossary</span>
+                </div>
+                <p style="font-size: 0.82rem; color: var(--md-sys-color-on-surface-variant); margin-bottom: 12px;">
+                    Search key terms, wave equations, O-Level exam traps, and memory formulas!
+                </p>
+
+                <div class="search-bar-container">
+                    <svg class="search-icon" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                    <input type="text" class="search-input" id="keywordSearch" placeholder="Search keywords (e.g., Vacuum speed, Transverse, Ionizing, Microwave)...">
+                </div>
+
+                <div class="keyword-list" id="keywordListContainer"></div>
+            </div>
+        </section>
+    </main>
+
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-tab="tab-game">
+            <div class="nav-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 9 18.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+            </div>
+            <span class="nav-label">Quest</span>
+        </button>
+
+        <button class="nav-item" data-tab="tab-sort">
+            <div class="nav-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+            </div>
+            <span class="nav-label">Sort Game</span>
+        </button>
+
+        <button class="nav-item" data-tab="tab-lab">
+            <div class="nav-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+            </div>
+            <span class="nav-label">Lab</span>
+        </button>
+
+        <button class="nav-item" data-tab="tab-keywords">
+            <div class="nav-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+            </div>
+            <span class="nav-label">Keywords</span>
+        </button>
+    </nav>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-dialog">
+            <h2 style="font-size: 1.25rem; margin-bottom: 10px;" id="modalTitle">Notice</h2>
+            <p style="font-size: 0.9rem; margin-bottom: 18px; color: var(--md-sys-color-on-surface-variant);" id="modalBody">Dialog message text.</p>
+            <button class="btn-action" id="modalCloseBtn">Got it!</button>
+        </div>
+    </div>
+
+    <script>
+        class SoundEngine {
+            constructor() {
+                this.ctx = null;
+                this.muted = false;
+            }
+
+            init() {
+                if (!this.ctx) {
+                    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                    if (AudioCtx) this.ctx = new AudioCtx();
+                }
+            }
+
+            play(type) {
+                if (this.muted) return;
+                this.init();
+                if (!this.ctx) return;
+
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+
+                const now = this.ctx.currentTime;
+
+                if (type === 'click') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(750, now);
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.04);
+                    osc.start(now);
+                    osc.stop(now + 0.04);
+                } else if (type === 'correct') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now);
+                    osc.frequency.setValueAtTime(659.25, now + 0.08);
+                    osc.frequency.setValueAtTime(783.99, now + 0.16);
+                    gain.gain.setValueAtTime(0.12, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                } else if (type === 'boss_hit') {
+                    osc.type = 'square';
+                    osc.frequency.setValueAtTime(180, now);
+                    osc.frequency.exponentialRampToValueAtTime(60, now + 0.25);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+                    osc.start(now);
+                    osc.stop(now + 0.25);
+                } else if (type === 'user_hit') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(140, now);
+                    osc.frequency.linearRampToValueAtTime(70, now + 0.3);
+                    gain.gain.setValueAtTime(0.25, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                } else if (type === 'boss_spawn') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(220, now);
+                    osc.frequency.setValueAtTime(330, now + 0.1);
+                    osc.frequency.setValueAtTime(440, now + 0.2);
+                    osc.frequency.setValueAtTime(880, now + 0.35);
+                    gain.gain.setValueAtTime(0.22, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+                    osc.start(now);
+                    osc.stop(now + 0.5);
+                } else if (type === 'wrong') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now);
+                    osc.frequency.linearRampToValueAtTime(110, now + 0.22);
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.22);
+                    osc.start(now);
+                    osc.stop(now + 0.22);
+                } else if (type === 'win') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(440, now);
+                    osc.frequency.setValueAtTime(554.37, now + 0.08);
+                    osc.frequency.setValueAtTime(659.25, now + 0.16);
+                    osc.frequency.setValueAtTime(880, now + 0.24);
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+                    osc.start(now);
+                    osc.stop(now + 0.4);
+                }
+            }
+        }
+
+        const sounds = new SoundEngine();
+
+        const PHYSICS_QUESTIONS = [
+            {
+                q: "What is the speed of ALL electromagnetic (EM) waves in a vacuum?",
+                options: [
+                    "3.0 × 10⁸ m/s",
+                    "3.0 × 10⁵ m/s",
+                    "340 m/s",
+                    "Varies depending on frequency"
+                ],
+                answer: 0,
+                hint: "All EM waves travel at the speed of light (c = 3.0 × 10⁸ m/s) in a vacuum!"
+            },
+            {
+                q: "Which statement accurately describes the physical nature of EM waves?",
+                options: [
+                    "Longitudinal waves requiring a medium",
+                    "Transverse waves with oscillating E and B fields",
+                    "Positively charged particle streams",
+                    "Sound waves vibrating at ultra-high frequencies"
+                ],
+                answer: 1,
+                hint: "EM waves are transverse and consist of perpendicular Electric (E) and Magnetic (B) fields."
+            },
+            {
+                q: "Which region of the EM spectrum has the LONGEST wavelength?",
+                options: ["Gamma Rays", "X-Rays", "Radio Waves", "Ultraviolet"],
+                answer: 2,
+                hint: "Remember 'Raging Martians...': Radio waves have the longest wavelength and lowest frequency!"
+            },
+            {
+                q: "Which EM wave is used for satellite communications and microwave ovens?",
+                options: ["Infrared", "Microwaves", "Radio Waves", "X-rays"],
+                answer: 1,
+                hint: "Microwaves penetrate the Earth's ionosphere for satellite communication and heat water molecules in food."
+            },
+            {
+                q: "Overexposure to Ultraviolet (UV) radiation increases the risk of which hazard?",
+                options: [
+                    "Internal organ burns",
+                    "Sunburn, skin aging, and skin cancer",
+                    "Instant gene death",
+                    "Heavy electric shocks"
+                ],
+                answer: 1,
+                hint: "UV light damages skin cells, leading to sunburn and increased skin cancer risks."
+            },
+            {
+                q: "Using c = f × λ, if an EM wave's frequency increases, what happens to its wavelength in vacuum?",
+                options: [
+                    "Wavelength increases",
+                    "Wavelength decreases",
+                    "Wavelength remains constant",
+                    "Wavelength drops to zero"
+                ],
+                answer: 1,
+                hint: "Since speed c is constant in vacuum, frequency f and wavelength λ are inversely proportional!"
+            },
+            {
+                q: "Which type of high-energy EM wave is utilized in medical cancer radiotherapy?",
+                options: ["Gamma Rays", "Infrared", "Radio Waves", "Visible Light"],
+                answer: 0,
+                hint: "Gamma rays carry high photon energy capable of destroying cancer cells."
+            },
+            {
+                q: "What happens to the speed of light when an EM wave enters glass from vacuum?",
+                options: [
+                    "Speed increases",
+                    "Speed decreases",
+                    "Speed stays at 3.0 × 10⁸ m/s",
+                    "Speed becomes infinite"
+                ],
+                answer: 1,
+                hint: "EM waves travel fastest in vacuum (3.0 × 10⁸ m/s) and slow down in denser mediums like glass or water."
+            },
+            {
+                q: "Visible light signals pass through optical fibers using which optical phenomenon?",
+                options: ["Total Internal Reflection", "Diffraction", "Polarization", "Thermal Absorption"],
+                answer: 0,
+                hint: "Light pulses bounce inside glass optical fibers via total internal reflection."
+            },
+            {
+                q: "Which objects naturally emit Infrared (IR) radiation?",
+                options: [
+                    "Only nuclear waste",
+                    "All objects with temperature above absolute zero",
+                    "Only hot light bulbs",
+                    "Objects moving faster than sound"
+                ],
+                answer: 1,
+                hint: "All warm objects emit thermal energy as Infrared (IR) radiation!"
+            }
+        ];
+
+        const BOSS_ROSTER = [
+            {
+                name: "👾 Radio Bobble",
+                maxHp: 100,
+                color: "#60A5FA",
+                svg: `<circle cx="50" cy="55" r="35" fill="#60A5FA"/>
+                      <circle cx="50" cy="55" r="31" fill="#93C5FD"/>
+                      <line x1="50" y1="23" x2="50" y2="10" stroke="#3B82F6" stroke-width="4" stroke-linecap="round"/>
+                      <circle cx="50" cy="8" r="6" fill="#EF4444"/>
+                      <circle cx="50" cy="8" r="3" fill="#FFF"/>
+                      <circle cx="38" cy="50" r="10" fill="#FFF"/><circle cx="62" cy="50" r="10" fill="#FFF"/>
+                      <circle cx="40" cy="50" r="5" fill="#1E293B"/><circle cx="64" cy="50" r="5" fill="#1E293B"/>
+                      <circle cx="42" cy="47" r="2" fill="#FFF"/><circle cx="66" cy="47" r="2" fill="#FFF"/>
+                      <circle cx="30" cy="58" r="5" fill="#F472B6" opacity="0.6"/>
+                      <circle cx="70" cy="58" r="5" fill="#F472B6" opacity="0.6"/>
+                      <path d="M 42 60 Q 50 68 58 60" stroke="#1E293B" stroke-width="3" fill="none" stroke-linecap="round"/>`
+            },
+            {
+                name: "🛰️ Microwave Fluffy",
+                maxHp: 120,
+                color: "#34D399",
+                svg: `<ellipse cx="50" cy="55" rx="38" ry="32" fill="#34D399"/>
+                      <path d="M 25 35 Q 18 15 32 28 Z" fill="#059669"/>
+                      <path d="M 75 35 Q 82 15 68 28 Z" fill="#059669"/>
+                      <circle cx="37" cy="50" r="9" fill="#FFF"/><circle cx="63" cy="50" r="9" fill="#FFF"/>
+                      <circle cx="38" cy="50" r="4.5" fill="#064E3B"/><circle cx="64" cy="50" r="4.5" fill="#064E3B"/>
+                      <circle cx="40" cy="48" r="1.5" fill="#FFF"/><circle cx="66" cy="48" r="1.5" fill="#FFF"/>
+                      <circle cx="28" cy="56" r="4.5" fill="#F87171" opacity="0.6"/>
+                      <circle cx="72" cy="56" r="4.5" fill="#F87171" opacity="0.6"/>
+                      <path d="M 43 58 Q 50 68 57 58" fill="#99F6E4" stroke="#064E3B" stroke-width="2.5"/>`
+            },
+            {
+                name: "🔥 Infrared Ember",
+                maxHp: 140,
+                color: "#FB923C",
+                svg: `<path d="M 50 12 Q 70 30 80 50 Q 88 78 50 85 Q 12 78 20 50 Q 30 30 50 12 Z" fill="#FB923C"/>
+                      <path d="M 50 20 Q 64 35 72 52 Q 78 74 50 78 Q 22 74 28 52 Q 36 35 50 20 Z" fill="#FDBA74"/>
+                      <circle cx="38" cy="52" r="9.5" fill="#FFF"/><circle cx="62" cy="52" r="9.5" fill="#FFF"/>
+                      <circle cx="39" cy="52" r="5" fill="#7C2D12"/><circle cx="63" cy="52" r="5" fill="#7C2D12"/>
+                      <circle cx="41" cy="49" r="2" fill="#FFF"/><circle cx="65" cy="49" r="2" fill="#FFF"/>
+                      <ellipse cx="29" cy="59" rx="5" ry="3" fill="#F43F5E" opacity="0.6"/>
+                      <ellipse cx="71" cy="59" rx="5" ry="3" fill="#F43F5E" opacity="0.6"/>
+                      <path d="M 44 60 Q 50 72 56 60 Z" fill="#991B1B"/>`
+            },
+            {
+                name: "☀️ UV Starling",
+                maxHp: 160,
+                color: "#A78BFA",
+                svg: `<path d="M 50 10 L 62 35 L 88 38 L 68 56 L 75 82 L 50 68 L 25 82 L 32 56 L 12 38 L 38 35 Z" fill="#A78BFA" stroke="#7C3AED" stroke-width="3" stroke-linejoin="round"/>
+                      <circle cx="40" cy="45" r="7.5" fill="#FFF"/><circle cx="60" cy="45" r="7.5" fill="#FFF"/>
+                      <circle cx="41" cy="45" r="4" fill="#4C1D95"/><circle cx="61" cy="45" r="4" fill="#4C1D95"/>
+                      <circle cx="43" cy="43" r="1.5" fill="#FFF"/><circle cx="63" cy="43" r="1.5" fill="#FFF"/>
+                      <circle cx="32" cy="50" r="4" fill="#F472B6" opacity="0.7"/>
+                      <circle cx="68" cy="50" r="4" fill="#F472B6" opacity="0.7"/>
+                      <path d="M 44 52 Q 47 56 50 52 Q 53 56 56 52" stroke="#4C1D95" stroke-width="2.5" fill="none" stroke-linecap="round"/>`
+            },
+            {
+                name: "💀 Gamma Sparkle",
+                maxHp: 200,
+                color: "#F43F5E",
+                svg: `<path d="M 22 50 Q 5 35 15 65 Z" fill="#F472B6"/>
+                      <path d="M 78 50 Q 95 35 85 65 Z" fill="#F472B6"/>
+                      <circle cx="50" cy="54" r="33" fill="#F43F5E"/>
+                      <circle cx="50" cy="54" r="28" fill="#FB7185"/>
+                      <path d="M 38 24 L 43 15 L 50 21 L 57 15 L 62 24 Z" fill="#FBBF24" stroke="#D97706" stroke-width="2"/>
+                      <circle cx="38" cy="48" r="9" fill="#FFF"/><circle cx="62" cy="48" r="9" fill="#FFF"/>
+                      <circle cx="39" cy="48" r="4.5" fill="#881337"/><circle cx="63" cy="48" r="4.5" fill="#881337"/>
+                      <circle cx="41" cy="45" r="2" fill="#FFF"/><circle cx="65" cy="45" r="2" fill="#FFF"/>
+                      <circle cx="28" cy="54" r="4.5" fill="#FFF" opacity="0.4"/>
+                      <circle cx="72" cy="54" r="4.5" fill="#FFF" opacity="0.4"/>
+                      <path d="M 43 57 Q 50 65 57 57" stroke="#881337" stroke-width="3" fill="none" stroke-linecap="round"/>`
+            }
+        ];
+
+        const SPECTRUM_DATA = [
+            {
+                name: "Radio Waves",
+                scale: "Wavelength: > 0.1 m | Frequency: < 3×10⁹ Hz",
+                app: "Radio/TV broadcasts, RFID tags, Wi-Fi, Bluetooth networks.",
+                danger: "Generally safe at normal background radiation levels."
+            },
+            {
+                name: "Microwaves",
+                scale: "Wavelength: 1 mm - 0.1 m | Frequency: 3×10⁹ - 3×10¹¹ Hz",
+                app: "Satellite TV, GPS signals, mobile networks, microwave ovens.",
+                danger: "Internal heating of body tissue if exposed to high power."
+            },
+            {
+                name: "Infrared (IR)",
+                scale: "Wavelength: 700 nm - 1 mm | Frequency: 3×10¹¹ - 4.3×10¹⁴ Hz",
+                app: "Thermal cameras, night vision, TV remotes, ear thermometers.",
+                danger: "Skin thermal burns."
+            },
+            {
+                name: "Visible Light",
+                scale: "Wavelength: 400 nm - 700 nm | Frequency: 4.3×10¹⁴ - 7.5×10¹⁴ Hz",
+                app: "Human vision, photography, optical fibre communications.",
+                danger: "Retinal blindness from intense laser beams."
+            },
+            {
+                name: "Ultraviolet (UV)",
+                scale: "Wavelength: 10 nm - 400 nm | Frequency: 7.5×10¹⁴ - 3×10¹6 Hz",
+                app: "Tanning beds, currency forgery check, sterilizing equipment.",
+                danger: "Sunburn, premature skin aging, eye cataracts, skin cancer."
+            },
+            {
+                name: "X-Rays",
+                scale: "Wavelength: 0.01 nm - 10 nm | Frequency: 3×10¹6 - 3×10¹⁹ Hz",
+                app: "Medical bone fracture scans, airport security luggage scanning.",
+                danger: "Ionizing radiation: cell mutation and cancer risk."
+            },
+            {
+                name: "Gamma Rays",
+                scale: "Wavelength: < 0.01 nm | Frequency: > 3×10¹⁹ Hz",
+                app: "Cancer radiotherapy, food & surgical instrument sterilization.",
+                danger: "Highly ionizing: destroys living cells and causes gene mutations."
+            }
+        ];
+
+        const KEYWORDS_BANK = [
+            {
+                term: "Electromagnetic (EM) Waves",
+                category: "Core Concept",
+                desc: "Transverse waves formed by perpendicular oscillating electric (E) and magnetic (B) fields. They do not require a medium to travel.",
+                formula: "c = f × λ"
+            },
+            {
+                term: "Vacuum Speed (c)",
+                category: "Constant",
+                desc: "All EM waves travel at exactly 3.0 × 10⁸ m/s in a vacuum. They slow down in denser mediums like glass or water.",
+                formula: "c = 3.0 × 10⁸ m/s"
+            },
+            {
+                term: "Transverse Nature",
+                category: "Property",
+                desc: "Vibrations occur at 90° to the direction of wave energy propagation. EM waves carry energy but carry NO electric charge.",
+                formula: "Neutral Charge"
+            },
+            {
+                term: "Ionizing Radiation",
+                category: "Hazard",
+                desc: "High-frequency waves (UV, X-Rays, Gamma Rays) carrying enough photon energy to knock electrons out of atoms, causing DNA damage.",
+                formula: "High f, Short λ"
+            },
+            {
+                term: "Spectrum Mnemonic",
+                category: "Memory Tip",
+                desc: "Order from lowest to highest frequency: Radio ➔ Microwave ➔ Infrared ➔ Visible ➔ UV ➔ X-Ray ➔ Gamma.",
+                formula: "Raging Martians Invade Venus Using X-ray Guns"
+            },
+            {
+                term: "Microwaves vs Radio Waves",
+                category: "O-Level Trap",
+                desc: "Microwaves pass straight through the Earth's ionosphere (ideal for satellites). Radio waves can bounce off the ionosphere.",
+                formula: "Microwaves: λ ≈ 1mm - 10cm"
+            }
+        ];
+
+        /* App Global State */
+        let state = {
+            score: 0,
+            coins: 0,
+            level: 1,
+            streak: 1,
+            totalAnswered: 0,
+            correctAnswered: 0,
+            currentQIndex: 0,
+            theme: 'day',
+            soundEnabled: true,
+            gameMode: 'boss',
+            blitzTimeLeft: 60,
+            bossIndex: 0,
+            bossHp: 100,
+            bossMaxHp: 100,
+            userHp: 100
+        };
+
+        function loadState() {
+            // Clear any previously saved data so simulation always starts fresh
+            localStorage.removeItem('sec3_em_quest_v4');
+        }
+
+        function saveState() {
+            // Disabled persistence to guarantee fresh state on every simulation start
+        }
+
+        function initEmWaveCanvas() {
+            const canvas = document.getElementById('emWaveCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const freqSlider = document.getElementById('freqSlider');
+            const ampSlider = document.getElementById('ampSlider');
+
+            let animationFrameId;
+
+            function draw(time) {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = canvas.parentElement.clientHeight;
+                const w = canvas.width;
+                const h = canvas.height;
+                const midY = h / 2;
+
+                const freq = parseFloat(freqSlider.value);
+                const amp = parseFloat(ampSlider.value);
+
+                document.getElementById('freqDisplay').textContent = freq + 'x';
+                document.getElementById('ampDisplay').textContent = amp;
+
+                ctx.clearRect(0, 0, w, h);
+
+                ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--md-sys-color-outline-variant');
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(30, midY);
+                ctx.lineTo(w - 20, midY);
+                ctx.stroke();
+
+                const t = time * 0.003 * freq;
+
+                // Electric Field (Y axis)
+                ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--md-sys-color-primary');
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                for (let x = 30; x <= w - 20; x++) {
+                    const angle = (x - 30) * 0.03 * freq - t;
+                    const y = midY - Math.sin(angle) * amp;
+                    if (x === 30) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                // Magnetic Field (Z 3D axis projection)
+                ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--md-sys-color-tertiary');
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                for (let x = 30; x <= w - 20; x++) {
+                    const angle = (x - 30) * 0.03 * freq - t;
+                    const offset = Math.sin(angle) * (amp * 0.6);
+                    const y = midY + offset * 0.5;
+                    const zX = x + offset * 0.5;
+                    if (x === 30) ctx.moveTo(zX, y);
+                    else ctx.lineTo(zX, y);
+                }
+                ctx.stroke();
+
+                ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--md-sys-color-primary');
+                ctx.font = 'bold 12px sans-serif';
+                ctx.fillText('E-Field (Vertical)', 40, 22);
+                ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--md-sys-color-tertiary');
+                ctx.fillText('B-Field (Perpendicular)', 160, 22);
+
+                animationFrameId = requestAnimationFrame(draw);
+            }
+
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+            requestAnimationFrame(draw);
+        }
+
+        function initSpectrumCanvas() {
+            const canvas = document.getElementById('spectrumCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const slider = document.getElementById('spectrumSlider');
+
+            function render() {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = canvas.parentElement.clientHeight;
+                const w = canvas.width;
+                const h = canvas.height;
+
+                ctx.clearRect(0, 0, w, h);
+
+                const colors = ['#4A90E2', '#50E3C2', '#F5A623', '#7ED321', '#9013FE', '#BD10E0', '#D0021B'];
+                const segmentW = w / 7;
+
+                for (let i = 0; i < 7; i++) {
+                    ctx.fillStyle = colors[i];
+                    ctx.fillRect(i * segmentW, 8, segmentW - 2, h - 30);
+                    ctx.fillStyle = '#FFF';
+                    ctx.font = 'bold 10px sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(SPECTRUM_DATA[i].name.split(' ')[0], i * segmentW + segmentW / 2, h / 2);
+                }
+
+                const sel = parseInt(slider.value);
+                ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--md-sys-color-on-surface');
+                ctx.lineWidth = 4;
+                ctx.strokeRect(sel * segmentW, 6, segmentW - 2, h - 26);
+
+                const data = SPECTRUM_DATA[sel];
+                document.getElementById('specName').textContent = data.name;
+                document.getElementById('specScale').innerHTML = `<strong>Scale:</strong> ${data.scale}`;
+                document.getElementById('specApp').innerHTML = `<strong>Applications:</strong> ${data.app}`;
+                document.getElementById('specDanger').innerHTML = `<strong>Dangers:</strong> ${data.danger}`;
+            }
+
+            slider.addEventListener('input', render);
+            window.addEventListener('resize', render);
+            render();
+        }
+
+        function initSortingGame() {
+            const pool = document.getElementById('poolSlots');
+            const target = document.getElementById('targetSlots');
+            pool.innerHTML = '';
+            target.innerHTML = '';
+            currentSortOrder = [];
+
+            const shuffled = [...CORRECT_SORT_IDS].sort(() => Math.random() - 0.5);
+
+            shuffled.forEach(name => {
+                const item = document.createElement('div');
+                item.className = 'sort-item';
+                item.textContent = name;
+                item.addEventListener('click', () => handleSortItemClick(name, item));
+                pool.appendChild(item);
+            });
+        }
+
+        function handleSortItemClick(name, element) {
+            sounds.play('click');
+            const pool = document.getElementById('poolSlots');
+            const target = document.getElementById('targetSlots');
+
+            if (element.parentElement === pool) {
+                pool.removeChild(element);
+                target.appendChild(element);
+                currentSortOrder.push(name);
+            } else {
+                target.removeChild(element);
+                pool.appendChild(element);
+                currentSortOrder = currentSortOrder.filter(n => n !== name);
+            }
+        }
+
+        function checkSortingOrder() {
+            if (currentSortOrder.length !== CORRECT_SORT_IDS.length) {
+                showModal("Incomplete Spectrum", "Place all 7 wave types in order before checking!");
+                return;
+            }
+
+            let correct = true;
+            for (let i = 0; i < CORRECT_SORT_IDS.length; i++) {
+                if (currentSortOrder[i] !== CORRECT_SORT_IDS[i]) {
+                    correct = false;
+                    break;
+                }
+            }
+
+            if (correct) {
+                sounds.play('win');
+                state.score += 500;
+                state.coins += 50;
+                updateUIStats();
+                saveState();
+                showModal("🎉 Perfect Spectrum!", "Awesome job! You correctly built the EM spectrum! +500 XP and +50 💎");
+            } else {
+                sounds.play('wrong');
+                showModal("Order Error", "Remember: Radio ➔ Microwave ➔ Infrared ➔ Visible ➔ UV ➔ X-Ray ➔ Gamma!");
+            }
+        }
+
+        function renderBossVisual() {
+            const currentBoss = BOSS_ROSTER[state.bossIndex % BOSS_ROSTER.length];
+            const svgElement = document.getElementById('bossSvgGraphic');
+            
+            document.getElementById('bossName').textContent = currentBoss.name;
+            document.getElementById('bossStageBadge').textContent = `STAGE ${state.bossIndex + 1}/${BOSS_ROSTER.length}`;
+            
+            svgElement.innerHTML = currentBoss.svg;
+            
+            // Update Hp Bars
+            const bossPercent = Math.max(0, Math.round((state.bossHp / state.bossMaxHp) * 100));
+            document.getElementById('bossHpFill').style.width = bossPercent + '%';
+            document.getElementById('bossHpText').textContent = `${state.bossHp} / ${state.bossMaxHp}`;
+
+            const userPercent = Math.max(0, state.userHp);
+            document.getElementById('userHpFill').style.width = userPercent + '%';
+            document.getElementById('userHpText').textContent = `${state.userHp} / 100`;
+        }
+
+        function triggerBossEntranceAnimation() {
+            sounds.play('boss_spawn');
+            const svgElement = document.getElementById('bossSvgGraphic');
+            svgElement.classList.remove('boss-entrance-anim', 'boss-hit-anim');
+            // Force Reflow
+            void svgElement.offsetWidth;
+            svgElement.classList.add('boss-entrance-anim');
+
+            appendCombatLog(`⚡ NEW CUTE MONSTER ENTERS: ${BOSS_ROSTER[state.bossIndex % BOSS_ROSTER.length].name}!`);
+        }
+
+        function triggerDamageFloatText(text, isUserDamage) {
+            const overlay = document.getElementById('dmgOverlay');
+            const numDiv = document.createElement('div');
+            numDiv.className = 'floating-dmg-text';
+            numDiv.textContent = text;
+            numDiv.style.color = isUserDamage ? '#EF4444' : '#10B981';
+            numDiv.style.left = (35 + Math.random() * 30) + '%';
+            numDiv.style.top = '40%';
+
+            overlay.appendChild(numDiv);
+            setTimeout(() => {
+                if (numDiv.parentElement) numDiv.parentElement.removeChild(numDiv);
+            }, 1200);
+        }
+
+        function appendCombatLog(msg) {
+            const logBox = document.getElementById('combatLog');
+            const p = document.createElement('div');
+            p.textContent = msg;
+            logBox.prepend(p);
+        }
+
+        function setMascotMood(mood, message) {
+            const mouth = document.getElementById('mascotMouth');
+            const msgBox = document.getElementById('mascotMessage');
+            if (msgBox) msgBox.textContent = message;
+
+            if (!mouth) return;
+            if (mood === 'happy') mouth.setAttribute('d', 'M 32 60 Q 50 85 68 60');
+            else if (mood === 'sad') mouth.setAttribute('d', 'M 32 75 Q 50 55 68 75');
+            else mouth.setAttribute('d', 'M 32 65 Q 50 78 68 65');
+        }
+
+        function loadQuestion() {
+            if (state.currentQIndex >= PHYSICS_QUESTIONS.length) state.currentQIndex = 0;
+
+            const current = PHYSICS_QUESTIONS[state.currentQIndex];
+            document.getElementById('qCurrentNum').textContent = state.currentQIndex + 1;
+            document.getElementById('qTotalNum').textContent = PHYSICS_QUESTIONS.length;
+            document.getElementById('questionText').textContent = current.q;
+
+            const optionsBox = document.getElementById('optionsContainer');
+            optionsBox.innerHTML = '';
+
+            current.options.forEach((optText, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'btn-option';
+                btn.innerHTML = `<span style="font-weight: 800;">${['A', 'B', 'C', 'D'][index]}.</span> ${optText}`;
+                btn.addEventListener('click', () => handleAnswer(index, current.answer, btn));
+                optionsBox.appendChild(btn);
+            });
+
+            setMascotMood('neutral', "Think carefully about EM wave properties! Select your answer below.");
+        }
+
+        function handleAnswer(selectedIndex, correctIndex, btnElement) {
+            const buttons = document.querySelectorAll('.btn-option');
+            buttons.forEach(b => b.disabled = true);
+
+            state.totalAnswered++;
+
+            if (selectedIndex === correctIndex) {
+                // Correct Answer! Attack the Boss!
+                btnElement.classList.add('correct');
+                sounds.play('boss_hit');
+
+                state.score += 100 * state.streak;
+                state.coins += 10;
+                state.correctAnswered++;
+                state.streak++;
+
+                // Animate Boss Damage
+                const dmgAmount = 30 + (state.streak * 5);
+                state.bossHp = Math.max(0, state.bossHp - dmgAmount);
+                
+                const bossSvg = document.getElementById('bossSvgGraphic');
+                bossSvg.classList.remove('boss-hit-anim');
+                void bossSvg.offsetWidth; // Trigger reflow
+                bossSvg.classList.add('boss-hit-anim');
+
+                triggerDamageFloatText(`-${dmgAmount} HP`, false);
+                appendCombatLog(`💥 CRITICAL HIT! You dealt ${dmgAmount} DMG to the monster!`);
+                setMascotMood('happy', "Direct hit! Physics power strikes the spectrum monster!");
+
+                // Check Boss Death & New Boss Spawn
+                if (state.bossHp === 0) {
+                    setTimeout(() => {
+                        sounds.play('win');
+                        state.level++;
+                        state.coins += 100;
+                        
+                        // Spawn Next Boss
+                        state.bossIndex++;
+                        const newBoss = BOSS_ROSTER[state.bossIndex % BOSS_ROSTER.length];
+                        state.bossMaxHp = newBoss.maxHp;
+                        state.bossHp = newBoss.maxHp;
+
+                        renderBossVisual();
+                        triggerBossEntranceAnimation();
+
+                        showModal("⚔️ MONSTER DEFEATED!", `You cleared Stage ${state.bossIndex}! A new cute monster, ${newBoss.name}, emerges! +100 💎 Reward!`);
+                    }, 500);
+                } else {
+                    renderBossVisual();
+                }
+
+            } else {
+                // Wrong Answer! Boss Attacks Player!
+                btnElement.classList.add('incorrect');
+                buttons[correctIndex].classList.add('correct');
+                sounds.play('user_hit');
+
+                state.streak = 1;
+                
+                // Animate Player Damage
+                const userDmg = 20;
+                state.userHp = Math.max(0, state.userHp - userDmg);
+                
+                const questionPanel = document.getElementById('questionPanel');
+                questionPanel.classList.remove('user-hit-anim');
+                void questionPanel.offsetWidth;
+                questionPanel.classList.add('user-hit-anim');
+
+                triggerDamageFloatText(`-${userDmg} SHIELD`, true);
+                appendCombatLog(`⚡ MONSTER ATTACK! Spectrum burst dealt ${userDmg} damage to your shield!`);
+                setMascotMood('sad', "Ouch! The monster counterattacked! Review the concept and try next!");
+
+                // Shield Regeneration if depleted
+                if (state.userHp <= 0) {
+                    setTimeout(() => {
+                        showModal("🛡️ Shield Recharging!", "Your energy shield was depleted! Recharging back to 100 HP...");
+                        state.userHp = 100;
+                        renderBossVisual();
+                    }, 600);
+                } else {
+                    renderBossVisual();
+                }
+            }
+
+            updateUIStats();
+            saveState();
+
+            setTimeout(() => {
+                state.currentQIndex++;
+                loadQuestion();
+            }, 1700);
+        }
+
+        function startBlitzTimer() {
+            clearInterval(blitzTimerId);
+            state.blitzTimeLeft = 60;
+            document.getElementById('timerLabel').textContent = 'Time Left';
+            document.getElementById('gameLevel').textContent = '60s';
+
+            blitzTimerId = setInterval(() => {
+                state.blitzTimeLeft--;
+                document.getElementById('gameLevel').textContent = state.blitzTimeLeft + 's';
+
+                if (state.blitzTimeLeft <= 0) {
+                    clearInterval(blitzTimerId);
+                    sounds.play('win');
+                    showModal("⏱️ Blitz Finished!", `Time's up! You scored ${state.score} total XP in Blitz Mode!`);
+                    switchGameMode('boss');
+                }
+            }, 1000);
+        }
+
+        function switchGameMode(mode) {
+            state.gameMode = mode;
+            const bossBtn = document.getElementById('modeBossBtn');
+            const blitzBtn = document.getElementById('modeBlitzBtn');
+
+            if (mode === 'boss') {
+                clearInterval(blitzTimerId);
+                bossBtn.classList.add('active');
+                blitzBtn.classList.remove('active');
+                document.getElementById('timerLabel').textContent = 'Level';
+                document.getElementById('gameLevel').textContent = state.level;
+            } else {
+                blitzBtn.classList.add('active');
+                bossBtn.classList.remove('active');
+                startBlitzTimer();
+            }
+        }
+
+        function updateUIStats() {
+            document.getElementById('gameScore').textContent = state.score;
+            document.getElementById('coinsCount').textContent = state.coins;
+            document.getElementById('gameStreak').textContent = state.streak + 'x';
+            document.getElementById('streakCount').textContent = state.streak;
+
+            if (state.gameMode === 'boss') {
+                document.getElementById('gameLevel').textContent = state.level;
+            }
+        }
+
+        function renderKeywords(filter = '') {
+            const container = document.getElementById('keywordListContainer');
+            container.innerHTML = '';
+
+            const filtered = KEYWORDS_BANK.filter(item => 
+                item.term.toLowerCase().includes(filter.toLowerCase()) ||
+                item.desc.toLowerCase().includes(filter.toLowerCase()) ||
+                item.category.toLowerCase().includes(filter.toLowerCase())
+            );
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div style="text-align: center; padding: 20px; color: var(--md-sys-color-outline);">No terms found matching "${filter}".</div>`;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'keyword-item';
+                div.innerHTML = `
+                    <div class="keyword-title">
+                        <span>${item.term}</span>
+                        <span class="keyword-category">${item.category}</span>
+                    </div>
+                    <div class="keyword-desc">${item.desc}</div>
+                    ${item.formula ? `<div class="keyword-formula">${item.formula}</div>` : ''}
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function showModal(title, text) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalBody').textContent = text;
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // Reset state every time simulation starts
+            state.score = 0;
+            state.coins = 0;
+            state.level = 1;
+            state.streak = 1;
+            state.totalAnswered = 0;
+            state.correctAnswered = 0;
+            state.currentQIndex = 0;
+            state.bossIndex = 0;
+            state.userHp = 100;
+
+            loadState();
+
+            // Setup initial Boss parameters for Stage 1
+            const currentBoss = BOSS_ROSTER[0];
+            state.bossMaxHp = currentBoss.maxHp;
+            state.bossHp = currentBoss.maxHp;
+
+            // Navigation
+            const navItems = document.querySelectorAll('.nav-item');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const targetTab = item.getAttribute('data-tab');
+                    sounds.play('click');
+
+                    navItems.forEach(n => n.classList.remove('active'));
+                    tabContents.forEach(t => t.classList.remove('active'));
+
+                    item.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+
+                    if (targetTab === 'tab-lab') {
+                        setTimeout(() => {
+                            initEmWaveCanvas();
+                            initSpectrumCanvas();
+                        }, 50);
+                    } else if (targetTab === 'tab-sort') {
+                        initSortingGame();
+                    }
+                });
+            });
+
+            // Theme Switcher
+            const themeBtn = document.getElementById('themeToggleBtn');
+            const themeIcon = document.getElementById('themeIcon');
+            
+            function applyTheme(theme) {
+                document.body.setAttribute('data-theme', theme);
+                themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+                state.theme = theme;
+                saveState();
+            }
+
+            themeBtn.addEventListener('click', () => {
+                const nextTheme = state.theme === 'day' || state.theme === 'light' ? 'dark' : 'day';
+                sounds.play('click');
+                applyTheme(nextTheme);
+            });
+
+            applyTheme(state.theme || 'day');
+
+            // Sound Toggle Switcher
+            const soundBtn = document.getElementById('soundToggleBtn');
+            const soundIcon = document.getElementById('soundIcon');
+            soundBtn.addEventListener('click', () => {
+                sounds.muted = !sounds.muted;
+                state.soundEnabled = !sounds.muted;
+                soundIcon.textContent = sounds.muted ? '🔇' : '🔊';
+                saveState();
+            });
+
+            // Mode Selector
+            document.getElementById('modeBossBtn').addEventListener('click', () => switchGameMode('boss'));
+            document.getElementById('modeBlitzBtn').addEventListener('click', () => switchGameMode('blitz'));
+
+            // Glossary Search
+            document.getElementById('keywordSearch').addEventListener('input', (e) => {
+                renderKeywords(e.target.value);
+            });
+
+            // Quiz Hint
+            document.getElementById('hintBtn').addEventListener('click', () => {
+                const current = PHYSICS_QUESTIONS[state.currentQIndex];
+                sounds.play('click');
+                showModal("💡 Beam Bot Hint", current.hint);
+            });
+
+            // Sort Game Buttons
+            document.getElementById('checkSortBtn').addEventListener('click', checkSortingOrder);
+            document.getElementById('resetSortBtn').addEventListener('click', () => {
+                sounds.play('click');
+                initSortingGame();
+            });
+
+            // Modal Close
+            document.getElementById('modalCloseBtn').addEventListener('click', () => {
+                document.getElementById('modalOverlay').classList.remove('active');
+            });
+
+            // Mascot Tip Trigger
+            document.getElementById('mascotAvatarHeader').addEventListener('click', () => {
+                sounds.play('click');
+                showModal("🤖 Beam Bot Tip!", "Remember: ALL EM waves travel at c = 3.0 × 10⁸ m/s in vacuum. Frequency increases from Radio to Gamma!");
+            });
+
+            // Initial view setup
+            renderBossVisual();
+            triggerBossEntranceAnimation();
+            renderKeywords();
+            updateUIStats();
+            loadQuestion();
+        });
+    </script>
+</body>
+</html>
